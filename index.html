@@ -130,11 +130,22 @@ nav.nav-hidden{transform:translateX(-50%) translateY(-120%);pointer-events:none}
   color:var(--black);margin-bottom:22px;
 }
 .hero h1 .gr{
-  background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 35%,var(--pink) 70%,var(--orange) 100%);
+  background:linear-gradient(90deg,
+    var(--blue) 0%,
+    var(--blue-l) 12%,
+    var(--purple) 25%,
+    var(--violet) 38%,
+    var(--pink) 52%,
+    var(--orange) 66%,
+    var(--yellow) 78%,
+    var(--green) 90%,
+    var(--teal) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  background-size:300% auto;animation:gShift 5s ease infinite;
+  background-size:400% auto;
+  animation:gShift 4s linear infinite;
+  filter:drop-shadow(0 4px 24px rgba(88,86,214,.25));
 }
-@keyframes gShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+@keyframes gShift{0%{background-position:0% center}100%{background-position:200% center}}
 .hero .sub{
   font-size:clamp(18px,2.5vw,23px);font-weight:400;color:var(--gray-600);
   line-height:1.5;max-width:540px;margin:0 auto 42px;
@@ -202,6 +213,110 @@ section{padding:120px 32px;position:relative}
 .met-n{font-family:var(--fd);font-size:46px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
 .mb .met-n{color:#1d4ed8}.mp .met-n{color:#6d28d9}.mg .met-n{color:#059669}.mk .met-n{color:#db2777}
 .met-l{font-size:13px;font-weight:600;color:var(--gray-600)}
+
+/* SIGNATURE WORK */
+.s-sig{background:var(--gray-100);padding:120px 32px;position:relative}
+.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.sig-card{background:var(--pw);border-radius:22px;padding:28px 24px;border:1px solid rgba(0,0,0,.04);transition:all .5s var(--ease);position:relative;overflow:hidden}
+.sig-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.sig-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.sig-card:hover::before{transform:scaleX(1)}
+.sig-num{font-family:var(--fd);font-size:38px;font-weight:900;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;margin-bottom:2px}
+.sig-lbl{font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:block}
+.sig-card h4{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--black);margin-bottom:6px;line-height:1.25}
+.sig-card p{font-size:13.5px;color:var(--gray-600);line-height:1.55}
+
+/* === INTRO SPLASH ANIMATION === */
+.intro-splash{
+  position:fixed;inset:0;z-index:99999;
+  background:#fbfbfd;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  animation:splashFade .8s cubic-bezier(.7,0,.3,1) 2.4s forwards;
+}
+@keyframes auroraShift{
+  0%,100%{background-position:0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 0% 0%}
+  50%{background-position:30% 20%, 70% 30%, 60% 80%, 30% 70%, 60% 40%, 0% 0%}
+}
+.intro-splash.done{display:none}
+.intro-splash::before,.intro-splash::after{
+  content:'';position:absolute;left:0;width:100%;height:50%;
+  background:#fbfbfd;
+  animation:curtainSplit 1s cubic-bezier(.7,0,.3,1) 2s forwards;
+  z-index:2;
+}
+.intro-splash::before{top:0}
+.intro-splash::before{animation-name:curtainTop}
+.intro-splash::after{bottom:0;animation-name:curtainBottom}
+@keyframes curtainTop{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+@keyframes curtainBottom{from{transform:translateY(0)}to{transform:translateY(100%)}}
+@keyframes splashFade{from{opacity:1;visibility:visible}to{opacity:0;visibility:hidden}}
+
+/* Floating color blobs in splash for extra vibrancy */
+.splash-blob{
+  position:absolute;border-radius:50%;filter:blur(60px);opacity:.6;pointer-events:none;
+  animation:blobFloat 6s ease-in-out infinite;
+}
+@keyframes blobFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(40px,-30px) scale(1.15)}
+}
+
+.intro-content{
+  position:relative;z-index:3;text-align:center;color:#1d1d1f;
+  animation:introContent 2s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes introContent{
+  0%{opacity:0;transform:translateY(20px) scale(.96)}
+  15%{opacity:1;transform:translateY(0) scale(1)}
+  75%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-12px) scale(1.04)}
+}
+.intro-mono{
+  font-family:var(--fd);font-size:14px;font-weight:700;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:rgba(29,29,31,.55);margin-bottom:20px;
+  animation:fadeInUp .8s cubic-bezier(.16,1,.3,1) .2s both;
+}
+.intro-name{
+  font-family:var(--fd);font-size:clamp(48px,9vw,96px);font-weight:900;
+  letter-spacing:-.05em;line-height:1;
+  background:linear-gradient(135deg,#2997ff,#5856d6,#ff375f,#ff9f0a);
+  background-size:300% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:gradientShift 3s ease infinite,fadeInUp .8s cubic-bezier(.16,1,.3,1) .35s both;
+  margin-bottom:16px;
+}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.intro-tag{
+  font-size:15px;color:rgba(29,29,31,.65);font-weight:500;
+  animation:fadeInUp .8s cubic-bezier(.16,1,.3,1) .55s both;
+}
+.intro-line{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink));
+  margin:24px auto 0;border-radius:2px;
+  animation:lineGrow 1.2s cubic-bezier(.16,1,.3,1) .8s both;
+  transform-origin:center;
+}
+@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* Floating particles in splash */
+.splash-particle{
+  position:absolute;border-radius:50%;pointer-events:none;
+  box-shadow:0 0 12px currentColor;
+  animation:floatUp 2.4s linear infinite;
+}
+@keyframes floatUp{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:.6}
+  100%{transform:translateY(-20vh) scale(1);opacity:0}
+}
+
+/* Body lock during splash */
+body.intro-active{overflow:hidden}
 
 /* SKILLS */
 .s-skills{background:linear-gradient(170deg,#0f172a 0%,#1e1b4b 40%,#312e81 100%);padding:120px 32px}
@@ -505,6 +620,7 @@ footer .fl a:hover{color:var(--blue)}
   .nav-links a{font-size:13px}
   .about-grid{gap:48px}
   .sk-grid{grid-template-columns:repeat(2,1fr)}
+  .sig-grid{grid-template-columns:repeat(2,1fr)}
   .bento{gap:12px}
   .t-feat{padding:32px}
   .t-feat h3{font-size:26px}
@@ -525,7 +641,7 @@ footer .fl a:hover{color:var(--blue)}
   .hero .sub{font-size:17px;margin-bottom:32px}
   .hero-badge{font-size:12px;padding:6px 16px;margin-bottom:22px}
   .btn{font-size:15px;padding:14px 26px}
-  .scroll-cue{bottom:20px}
+  .scroll-cue{display:none}
 
   .heading{font-size:clamp(28px,8vw,42px)}
   .subtext{font-size:16px;margin-bottom:40px}
@@ -642,6 +758,17 @@ html,body{overflow-x:hidden;max-width:100vw}
 img,svg{max-width:100%;height:auto}
 
 @media(max-width:768px){
+  /* Signature work mobile */
+  .s-sig{padding:64px 16px}
+  .sig-grid{grid-template-columns:1fr;gap:10px}
+  .sig-card{padding:22px 18px;border-radius:16px}
+  .sig-num{font-size:32px}
+  .sig-card h4{font-size:15px}
+  .sig-card p{font-size:12.5px}
+  /* Intro splash mobile */
+  .intro-name{font-size:clamp(38px,12vw,62px)}
+  .intro-tag{font-size:13px;padding:0 16px}
+  .intro-mono{font-size:11px;letter-spacing:.3em}
   /* Hero - even tighter on mobile */
   .hero{padding:90px 16px 56px}
   .hero h1{font-size:clamp(40px,11vw,52px);letter-spacing:-.04em;margin-bottom:14px;line-height:1.05}
@@ -761,7 +888,18 @@ img,svg{max-width:100%;height:auto}
 
 </style>
 </head>
-<body>
+<body class="intro-active">
+
+<!-- INTRO SPLASH -->
+<div class="intro-splash" id="introSplash">
+  <div class="intro-content">
+    <p class="intro-mono">Portfolio</p>
+    <h1 class="intro-name">Ravi Kiran Pilli</h1>
+    <p class="intro-tag">AI-Powered Full Stack Engineer</p>
+    <div class="intro-line"></div>
+  </div>
+</div>
+
 <div class="scroll-progress" id="sp"></div>
 
 <nav id="nav"><div class="nav-inner">
@@ -801,10 +939,10 @@ img,svg{max-width:100%;height:auto}
   <div class="container"><div class="about-grid">
     <div class="rl">
       <p class="eyebrow">About</p>
-      <h2 class="heading">Dedicated to building<br>systems that matter.</h2>
+      <h2 class="heading">Backend depth.<br>Frontend polish. AI-augmented.</h2>
       <div class="about-text">
-        <p>I'm Ravi Kiran — an AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem, shipping production software across PrimeRx, PrimeRx Market, POS, and MyPrimeRx. My mission is to ship robust, AI-augmented solutions that pharmacies depend on every day.</p>
-        <p>From eRx Automation and 340B Compliance to Compounding Rx, Patient Engagement, and AI-driven workflows, I thrive at the intersection of healthcare-grade systems engineering and modern AI tooling.</p>
+        <p>I'm Ravi Kiran — an AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem. My signature is the unglamorous engineering work that keeps healthcare-grade systems running: a codebase-wide Timezone Migration with NodaTime/IANA spanning 300+ screens, hardening Auth0 with WebAuthn passkeys and MFA, fixing SQL Server connection leaks in non-idempotent retry pipelines, and standing up EDI transaction processing for billing and eligibility.</p>
+        <p>Beyond that I've shipped event-driven Kafka pipelines, Eyecon integration for pill verification, 340B compliance, Compounding Rx workflows, and a Patient Engagement platform built on PWA architecture — all with AI tools (Claude Code, Cursor, Copilot) woven into the daily loop.</p>
       </div>
     </div>
     <div class="rr">
@@ -816,6 +954,23 @@ img,svg{max-width:100%;height:auto}
       </div>
     </div>
   </div></div>
+</section>
+
+<!-- SIGNATURE WORK STRIP -->
+<section class="s-sig">
+  <div class="cwide">
+    <p class="eyebrow r">Signature Work</p>
+    <h2 class="heading r">The hard problems<br>I love to solve.</h2>
+    <p class="subtext r">Specific, measurable engineering wins shipped in production pharmacy systems.</p>
+    <div class="sig-grid">
+      <div class="sig-card r d1"><div class="sig-num">300+</div><div class="sig-lbl">Screens</div><h4>Codebase-Wide Timezone Migration</h4><p>Led UTC storage with NodaTime/IANA, SQL Server AT TIME ZONE, and Angular Localization across the entire app. Interceptor-based and service-based approaches.</p></div>
+      <div class="sig-card r d2"><div class="sig-num">~30%</div><div class="sig-lbl">Faster lookup</div><h4>Elasticsearch Multi-Search Tuning</h4><p>Refactored prescription lookup queries — reduced response times across the busiest pharmacy screens.</p></div>
+      <div class="sig-card r d3"><div class="sig-num">0</div><div class="sig-lbl">Leaks left</div><h4>SQL Server Connection-Leak Fix</h4><p>Diagnosed and rewrote retry-pipeline scoping and async patterns that were exhausting the connection pool under load.</p></div>
+      <div class="sig-card r d4"><div class="sig-num">3</div><div class="sig-lbl">Auth modes</div><h4>Auth0 Hardening</h4><p>WebAuthn/Passkey biometric flows, Phone MFA, Email OTP, and SSO certificate management for secure patient authentication.</p></div>
+      <div class="sig-card r d5"><div class="sig-num">EDI</div><div class="sig-lbl">+ Eligibility</div><h4>EDI Transaction Processing</h4><p>Built EDI flows for pharmacy billing, insurance claims, and real-time eligibility verification.</p></div>
+      <div class="sig-card r d6"><div class="sig-num">Kafka</div><div class="sig-lbl">Event-driven</div><h4>Event-Driven Architecture</h4><p>Apache Kafka pipelines for real-time pharmacy data streaming and transaction messaging across services.</p></div>
+    </div>
+  </div>
 </section>
 
 <!-- SKILLS -->
@@ -971,7 +1126,7 @@ img,svg{max-width:100%;height:auto}
         <div class="rb"><h4>B.Tech in Computer Science Engineering</h4><h5>IIIT Nuzvid (RGUKT), AP, India</h5><span class="rm">2017 – 2021 · GPA: 8.5/10</span></div>
       </div>
       <div class="rs"><div class="rsl">Certifications</div><div class="rb"><ul><li>Microsoft Azure Fundamentals</li><li>Google AI Essentials</li><li>Unit Testing .NET 9 with xUnit .NET v3</li></ul></div></div>
-      <div class="rs"><div class="rsl">Honors &amp; Awards</div><div class="rb"><ul><li>Client Delight Award — Sails Software Solutions: Best Performer for MMS Project.</li><li>Employee Of The Month — Sails Software Solutions: Outstanding UI Development.</li><li>Pratibha Award — AP Government: State-Level Academic Excellence.</li></ul></div></div>
+      <div class="rs"><div class="rsl">Honors &amp; Awards</div><div class="rb"><ul><li><strong>Client Delight Award</strong> — Sails Software Solutions: Best Performer for MMS Project.</li><li><strong>Employee Of The Month</strong> — Sails Software Solutions: Outstanding UI Development.</li><li><strong>Pratibha Award</strong> — AP Government: State-Level Academic Excellence.</li></ul></div></div>
     </div>
     <div class="tp" id="tab-coverletter">
       <div class="clb">
@@ -990,6 +1145,48 @@ img,svg{max-width:100%;height:auto}
 </div>
 
 <script>
+// === INTRO SPLASH ANIMATION ===
+(function(){
+  const splash = document.getElementById('introSplash');
+  if(!splash) return;
+  const colors = ['#0071e3','#5856d6','#af52de','#ff375f','#ff9f0a','#30d158','#64d2ff','#ffd60a'];
+  // Floating colored particles
+  for(let i=0;i<28;i++){
+    const p = document.createElement('div');
+    p.className = 'splash-particle';
+    const sz = 3 + Math.random()*9;
+    const col = colors[Math.floor(Math.random()*colors.length)];
+    p.style.width = p.style.height = sz+'px';
+    p.style.left = (Math.random()*100)+'%';
+    p.style.background = col; p.style.color = col;
+    p.style.animationDelay = (Math.random()*2)+'s';
+    p.style.animationDuration = (1.8 + Math.random()*1.4)+'s';
+    p.style.opacity = (0.5 + Math.random()*0.4);
+    splash.appendChild(p);
+  }
+  // Big soft color blobs drifting in background for vibrancy
+  const blobConfigs = [
+    {top:'10%', left:'15%', size:280, color:'rgba(41,151,255,.35)', delay:'0s'},
+    {top:'15%', left:'70%', size:320, color:'rgba(175,82,222,.32)', delay:'-2s'},
+    {top:'60%', left:'10%', size:300, color:'rgba(255,159,10,.30)', delay:'-1s'},
+    {top:'65%', left:'75%', size:340, color:'rgba(255,55,95,.30)', delay:'-3s'},
+    {top:'40%', left:'45%', size:260, color:'rgba(99,230,190,.28)', delay:'-1.5s'},
+  ];
+  blobConfigs.forEach(cfg=>{
+    const b = document.createElement('div');
+    b.className = 'splash-blob';
+    b.style.top = cfg.top; b.style.left = cfg.left;
+    b.style.width = b.style.height = cfg.size+'px';
+    b.style.background = cfg.color;
+    b.style.animationDelay = cfg.delay;
+    splash.insertBefore(b, splash.firstChild);
+  });
+  setTimeout(()=>{
+    splash.classList.add('done');
+    document.body.classList.remove('intro-active');
+  }, 3300);
+})();
+
 // Scroll progress
 window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('sp').style.width=(window.scrollY/h*100)+'%'},{passive:true});
 
@@ -997,7 +1194,7 @@ window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHei
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v')}else{x.target.classList.remove('v')}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.r,.rs,.rl,.rr').forEach(el=>obs.observe(el));
 
-// Counters — replay every scroll
+// Counters
 const cObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=parseFloat(x.target.dataset.count);const dec=x.target.dataset.dec==='1';const suf=t===3.5?'+':t===300?'+':t===30?'%':'';x.target.textContent='0';const dur=1500;const s=performance.now();!function f(n){const p=Math.min((n-s)/dur,1);const v=(1-Math.pow(1-p,4))*t;x.target.textContent=(dec?v.toFixed(1):Math.round(v))+suf;p<1&&requestAnimationFrame(f)}(s)}else{x.target.textContent='0'}})},{threshold:.4});
 document.querySelectorAll('.met-n').forEach(el=>cObs.observe(el));
 

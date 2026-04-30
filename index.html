@@ -76,9 +76,23 @@ nav.nav-hidden{transform:translateX(-50%) translateY(-120%);pointer-events:none}
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   cursor:pointer;text-decoration:none;flex-shrink:0;
 }
-.nav-links{display:flex;gap:22px;list-style:none;align-items:center}
-.nav-links a{font-size:14px;color:var(--gray-700);text-decoration:none;transition:color .3s;cursor:pointer;font-weight:500;white-space:nowrap}
-.nav-links a:hover{color:var(--black)}
+.nav-links{display:flex;gap:6px;list-style:none;align-items:center}
+.nav-links a{
+  font-size:14px;color:var(--gray-700);text-decoration:none;
+  cursor:pointer;font-weight:500;white-space:nowrap;
+  padding:8px 14px;border-radius:980px;
+  position:relative;overflow:hidden;
+  transition:color .35s var(--ease), background .35s var(--ease), transform .35s var(--ease);
+}
+.nav-links a::before{
+  content:'';position:absolute;inset:0;border-radius:980px;
+  background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(88,86,214,.08));
+  transform:scale(.5);opacity:0;
+  transition:transform .4s var(--spring), opacity .35s var(--ease);
+  z-index:-1;
+}
+.nav-links a:hover{color:var(--black);transform:translateY(-1px)}
+.nav-links a:hover::before{transform:scale(1);opacity:1}
 .nav-cta{
   font-size:14px;color:#ffffff;font-weight:700;cursor:pointer;
   background:linear-gradient(135deg,var(--blue),var(--purple));
@@ -130,22 +144,11 @@ nav.nav-hidden{transform:translateX(-50%) translateY(-120%);pointer-events:none}
   color:var(--black);margin-bottom:22px;
 }
 .hero h1 .gr{
-  background:linear-gradient(90deg,
-    var(--blue) 0%,
-    var(--blue-l) 12%,
-    var(--purple) 25%,
-    var(--violet) 38%,
-    var(--pink) 52%,
-    var(--orange) 66%,
-    var(--yellow) 78%,
-    var(--green) 90%,
-    var(--teal) 100%);
+  background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 35%,var(--pink) 70%,var(--orange) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  background-size:400% auto;
-  animation:gShift 4s linear infinite;
-  filter:drop-shadow(0 4px 24px rgba(88,86,214,.25));
+  background-size:300% auto;animation:gShift 5s ease infinite;
 }
-@keyframes gShift{0%{background-position:0% center}100%{background-position:200% center}}
+@keyframes gShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
 .hero .sub{
   font-size:clamp(18px,2.5vw,23px);font-weight:400;color:var(--gray-600);
   line-height:1.5;max-width:540px;margin:0 auto 42px;
@@ -281,13 +284,12 @@ section{padding:120px 32px;position:relative}
 .intro-name{
   font-family:var(--fd);font-size:clamp(48px,9vw,96px);font-weight:900;
   letter-spacing:-.05em;line-height:1;
-  background:linear-gradient(135deg,#2997ff,#5856d6,#ff375f,#ff9f0a);
+  background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 35%,var(--pink) 70%,var(--orange) 100%);
   background-size:300% auto;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:gradientShift 3s ease infinite,fadeInUp .8s cubic-bezier(.16,1,.3,1) .35s both;
+  animation:gShift 5s ease infinite,fadeInUp .8s cubic-bezier(.16,1,.3,1) .35s both;
   margin-bottom:16px;
 }
-@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .intro-tag{
   font-size:15px;color:rgba(29,29,31,.65);font-weight:500;
@@ -587,6 +589,7 @@ footer .fl a:hover{color:var(--blue)}
 .ov.open .ov-panel{transform:translateY(0) scale(1);opacity:1}
 .ov-x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:none;background:var(--gray-100);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);font-size:16px;color:var(--gray-600)}
 .ov-x:hover{background:var(--gray-200);transform:rotate(90deg)}
+
 .tabs{display:flex;gap:3px;background:var(--gray-100);border-radius:980px;padding:3px;margin-bottom:32px;width:fit-content}
 .tabs button{font-family:var(--fb);font-size:14px;font-weight:600;padding:9px 26px;border:none;border-radius:980px;background:transparent;color:var(--gray-600);cursor:pointer;transition:all .4s var(--ease)}
 .tabs button.a{background:var(--pw);color:var(--black);box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -1203,10 +1206,11 @@ let ly=0;const nv=document.getElementById('nav');const stb=document.getElementBy
 window.addEventListener('scroll',()=>{const sy=window.scrollY;nv.classList.toggle('scrolled',sy>60);stb.classList.toggle('show',sy>500);if(sy>ly&&sy>100){nv.classList.add('nav-hidden')}else{nv.classList.remove('nav-hidden')}ly=sy},{passive:true});
 
 // Overlay
-function openOv(t){document.getElementById('docOv').classList.add('open');document.body.style.overflow='hidden';swTab(t||'resume')}
+function openOv(t){document.getElementById('docOv').classList.add('open');document.body.style.overflow='hidden';swTab(t||'resume');document.getElementById('docOv').scrollTop=0}
 function closeOv(){document.getElementById('docOv').classList.remove('open');document.body.style.overflow=''}
-function swTab(id){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('a',b.dataset.tab===id));document.querySelectorAll('.tp').forEach(p=>p.classList.toggle('a',p.id==='tab-'+id))}
+function swTab(id){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('a',b.dataset.tab===id));document.querySelectorAll('.tp').forEach(p=>p.classList.toggle('a',p.id==='tab-'+id));document.getElementById('docOv').scrollTo({top:0,behavior:'smooth'})}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOv()});
+
 
 // Mobile nav
 function toggleMob(){document.getElementById('mobNav').classList.add('open')}
@@ -1247,3 +1251,4 @@ function flyToTop(){
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                      

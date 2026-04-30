@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ravi Kiran Pilli | AI Full Stack Engineer</title>
-<meta name="description" content="AI Full Stack Engineer specializing in Angular, .NET, and cloud technologies. Building scalable healthcare software with modern web architectures.">
-<meta name="keywords" content="Ravi Kiran Pilli, Full Stack Engineer, Angular, .NET, Azure, Healthcare Software, C#, TypeScript, Portfolio">
+<title>Ravi Kiran Pilli | AI-Powered Full Stack Engineer</title>
+<meta name="description" content="AI-Powered Full Stack Engineer with 3.5+ years in the pharmacy ecosystem (PrimeRx, PrimeRx Market, POS, MyPrimeRx). Building scalable healthcare software with Angular, .NET, Azure, and AI.">
+<meta name="keywords" content="Ravi Kiran Pilli, AI Full Stack Engineer, Angular, .NET, Azure, Pharmacy Software, PrimeRx, MyPrimeRx, POS, 340B, Compounding Rx, AI, LangChain, OpenAI, Portfolio">
 <meta name="author" content="Ravi Kiran Pilli">
 <meta name="robots" content="index, follow">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Ravi Kiran Pilli | AI Full Stack Engineer">
-<meta property="og:description" content="AI Full Stack Engineer specializing in Angular, .NET, and cloud technologies. Building scalable healthcare software with modern web architectures.">
+<meta property="og:title" content="Ravi Kiran Pilli | AI-Powered Full Stack Engineer">
+<meta property="og:description" content="AI-Powered Full Stack Engineer with 3.5+ years in the pharmacy ecosystem. Angular, .NET, Azure, and AI.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ravikiranpilli.com">
 <meta property="og:image" content="https://ravikiranpilli.com/og-image.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ravi Kiran Pilli | AI Full Stack Engineer">
-<meta name="twitter:description" content="AI Full Stack Engineer specializing in Angular, .NET, and cloud technologies.">
+<meta name="twitter:title" content="Ravi Kiran Pilli | AI-Powered Full Stack Engineer">
+<meta name="twitter:description" content="AI-Powered Full Stack Engineer with 3.5+ years in the pharmacy ecosystem.">
 <meta name="twitter:image" content="https://ravikiranpilli.com/og-image.png">
 
 <!-- Favicon -->
@@ -155,6 +155,12 @@ nav.nav-hidden{transform:translateX(-50%) translateY(-120%);pointer-events:none}
 .btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 36px rgba(0,113,227,.45)}
 .btn-secondary{background:var(--pw);color:var(--black);box-shadow:0 2px 16px rgba(0,0,0,.07);border:1px solid var(--gray-200)}
 .btn-secondary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+/* Resume download chip */
+.resume-dl{display:flex;justify-content:flex-end;margin-bottom:16px}
+.resume-dl a{font-size:13px;font-weight:600;color:var(--pw);text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:980px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 4px 16px rgba(0,113,227,.25);transition:all .35s var(--ease)}
+.resume-dl a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,113,227,.4)}
+.resume-dl a svg{width:13px;height:13px;transition:transform .3s var(--ease)}
+.resume-dl a:hover svg{transform:translateY(2px)}
 .scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%)}
 .scroll-mouse{width:24px;height:38px;border:2px solid var(--gray-300);border-radius:12px;position:relative;margin:0 auto 6px}
 .scroll-mouse::after{content:'';width:3px;height:8px;background:var(--blue);border-radius:2px;position:absolute;top:6px;left:50%;transform:translateX(-50%);animation:sDot 2s ease infinite}
@@ -413,7 +419,51 @@ footer .fl a:hover{color:var(--blue)}
 .scroll-top.show{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
 .scroll-top:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 8px 32px rgba(0,113,227,.5)}
 .scroll-top:active{transform:scale(.95)}
-.scroll-top svg{width:20px;height:20px}
+.scroll-top svg{width:20px;height:20px;transition:opacity .2s var(--ease)}
+.scroll-top .rocket{position:absolute;font-size:24px;line-height:1;opacity:0;transform:scale(.4);transition:opacity .2s var(--ease),transform .25s var(--spring);pointer-events:none}
+.scroll-top.launching{animation:rocketLaunch 1s cubic-bezier(.5,0,.75,0) forwards;background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple))!important;box-shadow:0 0 40px rgba(255,159,10,.6),0 0 80px rgba(255,55,95,.4)!important}
+.scroll-top.launching svg{opacity:0}
+.scroll-top.launching .rocket{opacity:1;transform:scale(1.1)}
+@keyframes rocketLaunch{
+  0%{transform:translateY(0) scale(1)}
+  15%{transform:translateY(8px) scale(.92)}
+  35%{transform:translateY(-30px) scale(1.05)}
+  100%{transform:translateY(-100vh) scale(.4);opacity:0}
+}
+.scroll-top.launching::before{
+  content:'';position:absolute;left:50%;bottom:-6px;width:14px;height:60px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,210,120,.75) 30%,rgba(255,110,60,.45) 70%,transparent 100%);
+  border-radius:50% 50% 30% 30% / 60% 60% 40% 40%;
+  filter:blur(2px);
+  animation:exhaustFlame .12s ease-in-out infinite alternate;
+  z-index:-1;
+}
+@keyframes exhaustFlame{
+  from{height:50px;opacity:.85}
+  to{height:90px;opacity:1}
+}
+
+/* PARTICLE BURST */
+.particle{
+  position:fixed;border-radius:50%;pointer-events:none;z-index:9997;
+  will-change:transform,opacity;
+  animation:particleFly 1.3s cubic-bezier(.16,1,.3,1) forwards;
+  box-shadow:0 0 8px currentColor;
+}
+@keyframes particleFly{
+  0%{transform:translate(0,0) scale(1);opacity:1}
+  60%{opacity:.85}
+  100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}
+}
+
+/* PAGE REWIND */
+.page-rewinding{animation:pageRewind .9s cubic-bezier(.5,0,.25,1)}
+@keyframes pageRewind{
+  0%{filter:blur(0) brightness(1)}
+  35%{filter:blur(2.5px) brightness(1.08)}
+  100%{filter:blur(0) brightness(1)}
+}
 
 /* OVERLAY */
 .ov{position:fixed;inset:0;z-index:20000;background:rgba(0,0,0,.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;visibility:hidden;transition:all .4s var(--ease);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:60px 24px}
@@ -585,6 +635,130 @@ footer .fl a:hover{color:var(--blue)}
   .met-n{font-size:26px}
   .met{padding:14px 8px}
 }
+
+/* === MOBILE IMPROVEMENTS === */
+html,body{overflow-x:hidden;max-width:100vw}
+*{max-width:100vw}
+img,svg{max-width:100%;height:auto}
+
+@media(max-width:768px){
+  /* Hero - even tighter on mobile */
+  .hero{padding:90px 16px 56px}
+  .hero h1{font-size:clamp(40px,11vw,52px);letter-spacing:-.04em;margin-bottom:14px;line-height:1.05}
+  .hero .sub{font-size:16px;margin-bottom:28px;padding:0 4px;line-height:1.45}
+  .hero-badge{font-size:11px;padding:6px 14px;margin-bottom:18px}
+  .hero-btns{gap:10px;width:100%;flex-direction:column;align-items:stretch;padding:0 8px}
+  .btn{width:100%;justify-content:center;font-size:15px;padding:13px 22px}
+
+  /* Headings */
+  .heading{font-size:clamp(28px,8vw,40px);line-height:1.1}
+  .subtext{font-size:15px;margin-bottom:32px;padding:0 2px}
+  .eyebrow{font-size:12px}
+  section{padding:64px 16px}
+
+  /* About */
+  .about-grid{grid-template-columns:1fr;gap:28px}
+  .metrics{grid-template-columns:1fr 1fr;gap:8px}
+  .met{padding:18px 8px;border-radius:16px}
+  .met-n{font-size:30px}
+  .met-l{font-size:11px}
+
+  /* Skills - cleaner on mobile */
+  .s-skills{padding:64px 16px}
+  .sk-grid{grid-template-columns:1fr;gap:10px}
+  .sk-card{padding:20px 16px;border-radius:16px}
+  .sk-card h3{font-size:13px;margin-bottom:12px}
+  .chip{font-size:11px;padding:5px 10px}
+
+  /* Experience */
+  .s-exp{padding:64px 16px}
+  .exp-card{padding:20px 16px;border-radius:16px}
+  .exp-card h3{font-size:17px;line-height:1.3}
+  .exp-card h4{font-size:14px;line-height:1.4}
+  .exp-badge{font-size:10px;padding:4px 10px;align-self:flex-start}
+  .exp-top{flex-direction:column;align-items:flex-start;gap:4px}
+  .el li{font-size:13px;line-height:1.55}
+  .exp-role{font-size:10px;margin-bottom:12px}
+
+  /* Projects bento - stack to single column, prevent overflow */
+  .s-proj{padding:64px 16px}
+  .bento{grid-template-columns:1fr;gap:10px}
+  .tile,.t-feat,.t-wide,.t-side,.t-half{grid-column:span 1;min-height:auto;padding:24px 18px;border-radius:18px}
+  .t-feat{flex-direction:column;text-align:left;gap:16px}
+  .t-feat h3{font-size:22px}
+  .t-feat p{font-size:14px}
+  .cloud-orbit{width:120px;height:120px;align-self:center}
+  .cloud-core{font-size:36px}
+  .orbit-icon{width:24px;height:24px;font-size:11px;border-radius:7px}
+  .tile h3{font-size:18px;line-height:1.25}
+  .tile p{font-size:13px;line-height:1.5}
+  .tile .ico{font-size:32px}
+  .tile .meta{font-size:10px}
+  .tile .tags span{font-size:9px;padding:3px 8px}
+
+  /* Education */
+  .s-edu{padding:64px 16px}
+  .edu-grid{grid-template-columns:1fr;gap:10px}
+  .edu-card{padding:24px 16px;border-radius:16px}
+  .gpa{font-size:26px}
+  .certs{grid-template-columns:1fr 1fr;gap:8px}
+  .cert{padding:18px 10px;border-radius:14px}
+  .credh{font-size:18px;margin-bottom:14px}
+  .award{padding:18px 14px;border-radius:14px;gap:12px}
+  .award h4{font-size:14px}
+  .award p{font-size:12px;line-height:1.5}
+
+  /* Contact */
+  .s-contact{padding:64px 16px}
+  .contact-row{flex-direction:column;align-items:stretch;gap:8px}
+  .cl{width:100%;justify-content:center;font-size:13px;padding:11px 16px}
+
+  /* Resume overlay - full viewport on mobile */
+  .ov{padding:8px}
+  .ov-panel{padding:18px 14px;border-radius:14px;max-height:96vh;overflow-y:auto}
+  .ov-x{top:8px;right:8px;width:30px;height:30px;font-size:13px}
+  
+  .tabs{margin-bottom:18px;width:100%}
+  .tabs button{font-size:12px;padding:6px 14px;flex:1}
+  .rh{margin-bottom:20px;padding-bottom:14px}
+  .rh h2{font-size:20px}
+  .rh .rt{font-size:12px}
+  .rh .rc{font-size:11px;line-height:1.4;word-break:break-word}
+  .rs{margin-bottom:20px}
+  .rsl{font-size:10px;margin-bottom:8px}
+  .rb h4{font-size:13px;line-height:1.3}
+  .rb h5{font-size:11px}
+  .rb .rm{font-size:10px}
+  .rb li{font-size:11.5px;line-height:1.55;padding-left:12px}
+  .rb p{font-size:11.5px;line-height:1.55}
+  .rsk{gap:4px}
+  .rsk span{font-size:9px;padding:2px 6px}
+  .clb h3{font-size:18px}
+  .clb .clt{font-size:12px;margin-bottom:18px}
+  .clb p{font-size:12px;line-height:1.65;margin-bottom:10px}
+
+  /* Scroll-to-top - smaller on mobile */
+  .scroll-top{bottom:18px;right:18px;width:44px;height:44px}
+  .scroll-top svg{width:18px;height:18px}
+  .scroll-top .rocket{font-size:20px}
+
+  /* Nav - mobile */
+  nav{width:calc(100% - 16px);top:8px;height:50px;border-radius:14px}
+  .nav-inner{padding:0 14px}
+  .nav-logo{font-size:16px}
+  .nav-cta{font-size:12px;padding:7px 14px}
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:36px}
+  .hero .sub{font-size:14.5px}
+  .heading{font-size:26px}
+  .met-n{font-size:26px}
+  .certs{grid-template-columns:1fr}
+  .ov-panel{padding:16px 12px}
+  .scroll-top{bottom:14px;right:14px;width:40px;height:40px}
+}
+
 </style>
 </head>
 <body>
@@ -611,9 +785,9 @@ footer .fl a:hover{color:var(--blue)}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge"><span>AI Full Stack Engineer · Open to Opportunities</span></div>
+    <div class="hero-badge"><span>AI-Powered Full Stack Engineer · Open to Opportunities</span></div>
     <h1>Ravi Kiran<br><span class="gr">Pilli.</span></h1>
-    <p class="sub">AI Full Stack Engineer crafting pharmacy management platforms with Angular, .NET, Azure, and AI.</p>
+    <p class="sub">Blending full stack engineering, AI, and product thinking to turn complex ideas into scalable, intelligent, and impactful digital products.</p>
     <div class="hero-btns">
       <a class="btn btn-primary" onclick="openOv('resume')">View Resume <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
       <a class="btn btn-secondary" href="#projects">See my work <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v12M2 8l5 5 5-5"/></svg></a>
@@ -629,13 +803,13 @@ footer .fl a:hover{color:var(--blue)}
       <p class="eyebrow">About</p>
       <h2 class="heading">Dedicated to building<br>systems that matter.</h2>
       <div class="about-text">
-        <p>I'm Ravi Kiran — a software engineer with a passion for backend and frontend technologies. My mission is to create robust, efficient, and innovative solutions that stand the test of time.</p>
-        <p>From pharmacy management platforms to AI-powered tools, I thrive at the intersection of complex systems engineering and polished user experiences.</p>
+        <p>I'm Ravi Kiran — an AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem, shipping production software across PrimeRx, PrimeRx Market, POS, and MyPrimeRx. My mission is to ship robust, AI-augmented solutions that pharmacies depend on every day.</p>
+        <p>From eRx Automation and 340B Compliance to Compounding Rx, Patient Engagement, and AI-driven workflows, I thrive at the intersection of healthcare-grade systems engineering and modern AI tooling.</p>
       </div>
     </div>
     <div class="rr">
       <div class="metrics">
-        <div class="met mb"><div class="met-n" data-count="3">0</div><div class="met-l">Years Experience</div></div>
+        <div class="met mb"><div class="met-n" data-count="3.5" data-dec="1">0</div><div class="met-l">Years In Pharmacy Tech</div></div>
         <div class="met mp"><div class="met-n" data-count="300">0</div><div class="met-l">Screens Built</div></div>
         <div class="met mg"><div class="met-n" data-count="3.9" data-dec="1">0</div><div class="met-l">GPA / 4.0</div></div>
         <div class="met mk"><div class="met-n" data-count="30">0</div><div class="met-l">% Perf Boost</div></div>
@@ -651,12 +825,15 @@ footer .fl a:hover{color:var(--blue)}
     <h2 class="heading heading-w r">Skills &amp; expertise.</h2>
     <p class="subtext sub-w r">Technologies I use daily to build reliable, scalable software.</p>
     <div class="sk-grid">
-      <div class="sk-card r d1"><h3><span class="dot db"></span>Frontend</h3><div class="chips"><span class="chip cb">Angular</span><span class="chip cb">TypeScript</span><span class="chip cb">JavaScript</span><span class="chip cb">HTML5</span><span class="chip cb">CSS3</span><span class="chip cb">Bootstrap</span><span class="chip cb">RxJS</span></div></div>
-      <div class="sk-card r d2"><h3><span class="dot dp"></span>Backend</h3><div class="chips"><span class="chip cp">C#</span><span class="chip cp">ASP.NET Core</span><span class="chip cp">.NET</span><span class="chip cp">RESTful APIs</span><span class="chip cp">Dapper</span><span class="chip cp">ADO.NET</span><span class="chip cp">NodaTime</span></div></div>
+      <div class="sk-card r d1"><h3><span class="dot db"></span>Frontend</h3><div class="chips"><span class="chip cb">Angular</span><span class="chip cb">TypeScript</span><span class="chip cb">JavaScript</span><span class="chip cb">HTML5</span><span class="chip cb">CSS3</span><span class="chip cb">Bootstrap</span><span class="chip cb">RxJS</span><span class="chip cb">PWA</span></div></div>
+      <div class="sk-card r d2"><h3><span class="dot dp"></span>Backend</h3><div class="chips"><span class="chip cp">C#</span><span class="chip cp">ASP.NET Core</span><span class="chip cp">.NET</span><span class="chip cp">RESTful APIs</span><span class="chip cp">Dapper</span><span class="chip cp">ADO.NET</span><span class="chip cp">NodaTime</span><span class="chip cp">Python</span></div></div>
       <div class="sk-card r d3"><h3><span class="dot dt"></span>Data &amp; Cloud</h3><div class="chips"><span class="chip ct">SQL Server</span><span class="chip ct">Elasticsearch</span><span class="chip ct">MongoDB</span><span class="chip ct">Azure</span><span class="chip ct">Azure DevOps</span><span class="chip ct">CI/CD</span><span class="chip ct">Apache Kafka</span></div></div>
-      <div class="sk-card r d4"><h3><span class="dot do"></span>Auth &amp; Security</h3><div class="chips"><span class="chip co">Auth0</span><span class="chip co">JWT</span><span class="chip co">OAuth2</span><span class="chip co">WebAuthn</span><span class="chip co">SSO</span><span class="chip co">MFA</span></div></div>
-      <div class="sk-card r d5"><h3><span class="dot dg"></span>AI &amp; Automation</h3><div class="chips"><span class="chip cg">n8n</span><span class="chip cg">AI APIs</span><span class="chip cg">Python</span><span class="chip cg">OpenCV</span><span class="chip cg">CNN</span></div></div>
-      <div class="sk-card r d6"><h3><span class="dot dk"></span>Tools &amp; Methods</h3><div class="chips"><span class="chip ck">Git</span><span class="chip ck">Jenkins</span><span class="chip ck">IIS</span><span class="chip ck">Agile Scrum</span><span class="chip ck">NUnit</span><span class="chip ck">xUnit</span></div></div>
+      <div class="sk-card r d4"><h3><span class="dot dg"></span>AI Coding Tools</h3><div class="chips"><span class="chip cg">Claude Code</span><span class="chip cg">ChatGPT</span><span class="chip cg">Cursor</span><span class="chip cg">GitHub Copilot</span><span class="chip cg">Google Antigravity</span><span class="chip cg">Gamma</span></div></div>
+      <div class="sk-card r d5"><h3><span class="dot dg"></span>AI APIs &amp; Frameworks</h3><div class="chips"><span class="chip cg">OpenAI API</span><span class="chip cg">Anthropic API</span><span class="chip cg">Gemini</span><span class="chip cg">LangChain</span><span class="chip cg">RAG</span><span class="chip cg">Embeddings</span><span class="chip cg">Pinecone</span></div></div>
+      <div class="sk-card r d6"><h3><span class="dot dg"></span>Automation &amp; Workflows</h3><div class="chips"><span class="chip cg">n8n</span><span class="chip cg">OpenCV</span><span class="chip cg">CNN</span><span class="chip cg">Python</span></div></div>
+      <div class="sk-card r d1"><h3><span class="dot do"></span>Auth &amp; Security</h3><div class="chips"><span class="chip co">Auth0</span><span class="chip co">JWT</span><span class="chip co">OAuth2</span><span class="chip co">WebAuthn</span><span class="chip co">SSO</span><span class="chip co">MFA</span></div></div>
+      <div class="sk-card r d2"><h3><span class="dot dk"></span>Pharmacy Domain</h3><div class="chips"><span class="chip ck">PrimeRx</span><span class="chip ck">PrimeRx Market</span><span class="chip ck">MyPrimeRx</span><span class="chip ck">POS</span><span class="chip ck">340B</span><span class="chip ck">Compounding Rx</span><span class="chip ck">eRx</span><span class="chip ck">EDI</span></div></div>
+      <div class="sk-card r d3"><h3><span class="dot dk"></span>Tools &amp; Methods</h3><div class="chips"><span class="chip ck">Git</span><span class="chip ck">Jenkins</span><span class="chip ck">IIS</span><span class="chip ck">Agile Scrum</span><span class="chip ck">NUnit</span><span class="chip ck">xUnit</span></div></div>
     </div>
   </div>
 </section>
@@ -668,19 +845,19 @@ footer .fl a:hover{color:var(--blue)}
     <h2 class="heading r">Where I've made<br>an impact.</h2>
     <p class="subtext r">From intern to engineer — building healthcare software pharmacies depend on daily.</p>
     <div class="exp-card e1 r">
-      <div class="exp-top"><h3>PrimeRx (Micro Merchant Systems)</h3><span class="exp-badge eb1">Mar 2026 — Present</span></div>
-      <h4>PrimeRx Cloud, Patient Engagement</h4><span class="exp-role">Software Engineer</span>
-      <ul class="el"><li>Leading codebase-wide timezone migration with NodaTime/IANA, SQL Server AT TIME ZONE, Angular localization.</li><li>Built datetime localization spanning 300+ screens with interceptor-based approaches.</li><li>Fixed SQL Server connection leaks by refactoring retry pipeline scoping and async patterns.</li><li>Optimized Auth0 — WebAuthn/passkey biometric flows, phone MFA, email OTP, SSO certs.</li><li>Developed EDI transaction processing for pharmacy billing and real-time eligibility verification.</li><li>Tenant migration scripts for drug/patient data; drug price update workflows.</li></ul>
+      <div class="exp-top"><h3>RedSail Technologies (formerly PrimeRx by Micro Merchant Systems)</h3><span class="exp-badge eb1">Mar 2026 — Present</span></div>
+      <h4>PrimeRx Cloud · Patient Engagement · PrimeRx Market · POS · MyPrimeRx</h4><span class="exp-role">AI-Powered Full Stack Engineer</span>
+      <ul class="el"><li>Building Patient Engagement on a PWA Architecture — appless install, push notifications, offline-first refills — without app-store dependency.</li><li>Implemented 340B Compliance and Compounding Rx workflows — split-billing logic, drug-price tier handling, audit trails for covered entities.</li><li>Leading codebase-wide Timezone Migration with NodaTime/IANA, SQL Server AT TIME ZONE, Angular Localization.</li><li>Datetime Localization spanning 300+ screens with interceptor-based and service-based approaches.</li><li>Fixed SQL Server connection leaks by refactoring retry pipeline scoping and async patterns.</li><li>Optimized Auth0 — WebAuthn/Passkey Biometric Flows, Phone MFA, Email OTP, SSO Certs.</li><li>EDI Transaction Processing for pharmacy billing, insurance claims, and real-time Eligibility Verification.</li><li>Tenant Migration Scripts for drug/patient data; Drug Price Update workflows.</li><li>AI-augmented development using Claude Code, Cursor, GitHub Copilot — accelerated feature delivery and code review.</li></ul>
     </div>
     <div class="exp-card e2 r">
       <div class="exp-top"><h3>PrimeRx (Micro Merchant Systems)</h3><span class="exp-badge eb2">May — Dec 2025</span></div>
-      <h4>PrimeRx Cloud, Patient Engagement</h4><span class="exp-role">Software Engineer Intern</span>
-      <ul class="el"><li>Optimized Elasticsearch multi-search queries — 30% faster prescription lookup.</li><li>Built Patient Engagement Platform: biometric login, Rx refills, insurance, pharmacy chat.</li><li>Contributed to PrimeRx Cloud modernization — centralized processing, cross-location sync.</li></ul>
+      <h4>PrimeRx Cloud · Patient Engagement</h4><span class="exp-role">Software Engineer Intern</span>
+      <ul class="el"><li>Optimized Elasticsearch Multi-Search queries — 30% faster Prescription Lookup.</li><li>Built Patient Engagement Platform: Biometric Login, Rx Refills, Insurance Management, Pharmacy Chat.</li><li>Contributed to PrimeRx Cloud Modernization — centralized processing, cross-location sync.</li></ul>
     </div>
     <div class="exp-card e3 r">
       <div class="exp-top"><h3>Sails Software Solutions</h3><span class="exp-badge eb3">May 2021 — Jul 2023</span></div>
-      <h4>ePrimeRx</h4><span class="exp-role">.NET Full Stack Developer</span>
-      <ul class="el"><li>Designed Pharmacy Delivery Module; automated eRx processing end-to-end.</li><li>CI/CD with Azure DevOps and Jenkins; optimized SQL stored procedures.</li><li>Event-driven architecture with Apache Kafka; OAuth2 APIs; Azure + IIS deployment.</li></ul>
+      <h4>ePrimeRx (PrimeRx Ecosystem)</h4><span class="exp-role">.NET Full Stack Developer</span>
+      <ul class="el"><li>Designed Delivery and Shipping Feature; automated eRx Processing end-to-end.</li><li>CI/CD with Azure DevOps and Jenkins; optimized SQL Stored Procedures.</li><li>Event-Driven Architecture with Apache Kafka; OAuth2 APIs; Azure + IIS deployment.</li><li>Integrated Barcode Scanning and Label Printing workflows for prescription dispensing, reducing manual entry errors.</li><li>Built Audit Logging and User Activity Tracking modules for regulatory compliance across pharmacy operations.</li><li>Implemented Role-Based Dashboards with custom views for pharmacists, technicians, and managers.</li><li>Optimized Angular performance with Lazy Loading, OnPush change detection, and bundle analysis — ~25% faster initial load.</li></ul>
     </div>
   </div>
 </section>
@@ -711,19 +888,19 @@ footer .fl a:hover{color:var(--blue)}
             <div class="orbit-icon oi8">🗄️</div>
           </div>
         </div>
-        <div class="t-feat-right"><h3>PrimeRx Cloud</h3><span class="meta">PrimeRx · 2025</span><p>Cloud-based modernization of pharmacy operations — centralized prescription processing, distributed Elasticsearch search, real-time transaction handling, cross-location synchronization, and enhanced scalability over legacy on-prem systems.</p><div class="tags"><span>Azure</span><span>ASP.NET Core</span><span>Elasticsearch</span><span>Kafka</span><span>SQL Server</span></div></div></div>
+        <div class="t-feat-right"><h3>PrimeRx Cloud Ecosystem</h3><span class="meta">RedSail / PrimeRx · 2025–Present</span><p>Cloud Modernization across PrimeRx, PrimeRx Market, POS, and MyPrimeRx — centralized Prescription Processing, distributed Elasticsearch Search, real-time Transaction Handling, 340B Compliance, Compounding Rx workflows, and cross-location synchronization over legacy on-prem systems.</p><div class="tags"><span>Azure</span><span>ASP.NET Core</span><span>Elasticsearch</span><span>Kafka</span><span>SQL Server</span><span>340B</span></div></div></div>
 
       <!-- 8+4 -->
-      <div class="tile t-wide rs d1"><span class="ico">💊</span><h3>Patient Engagement Platform</h3><span class="meta">PrimeRx · 2025</span><p>Patient-facing pharmacy app — biometric login (Face ID), prescription refills, Rx history, insurance management, due-date tracking, direct pharmacy chat, medication profiles.</p><div class="tags"><span>Angular</span><span>ASP.NET Core</span><span>Auth0</span><span>Elasticsearch</span></div></div>
-      <div class="tile t-side rs d2"><span class="ico">💊</span><h3>ePrimeRx™</h3><span class="meta">Sails · 2021–2023</span><p>Total pharmacy dispensing — claims, labeling, inventory, Rx generation.</p><div class="tags"><span>C#</span><span>.NET</span><span>SQL Server</span></div></div>
+      <div class="tile t-wide rs d1"><span class="ico">💊</span><h3>Patient Engagement (PWA)</h3><span class="meta">RedSail / PrimeRx · 2025–Present</span><p>Patient-facing pharmacy platform on PWA Architecture — Biometric Login (Face ID), Rx Refills, Rx History, Insurance Management, Due-Date Tracking, Pharmacy Chat, Medication Profiles. Appless install, no app store needed.</p><div class="tags"><span>Angular PWA</span><span>ASP.NET Core</span><span>Auth0</span><span>Elasticsearch</span></div></div>
+      <div class="tile t-side rs d2"><span class="ico">💊</span><h3>ePrimeRx™</h3><span class="meta">Sails · 2021–2023</span><p>Total Pharmacy Dispensing — Claims, Labeling, Inventory Management, Rx Generation.</p><div class="tags"><span>C#</span><span>.NET</span><span>SQL Server</span></div></div>
 
       <!-- Halves -->
-      <div class="tile t-half t-emerald rs d3"><span class="ico">🤖</span><h3>AI-Powered Quiz Platform</h3><span class="meta">Personal · 2025</span><p>Built in Angular from scratch — AI API integration for dynamic question generation, real-time scoring, animated leaderboards. 300+ live participants.</p><div class="tags"><span>Angular</span><span>AI APIs</span><span>TypeScript</span><span>Real-Time</span></div></div>
-      <div class="tile t-half t-amber rs d4"><span class="ico">🎙️</span><h3>Voice-Based Email System</h3><span class="meta">University · 2020 · Team Lead</span><p>Voice-command email system — compose, check, search, delete emails through voice instructions using Python.</p><div class="tags"><span>Python</span><span>PyAudio</span><span>NLP</span></div></div>
+      <div class="tile t-half t-emerald rs d3"><span class="ico">🤖</span><h3>AI-Powered Quiz Platform</h3><span class="meta">Personal · 2025</span><p>Built in Angular from scratch — OpenAI / Anthropic API integration for Dynamic Question Generation, Real-Time Scoring, animated Leaderboards. 300+ live participants.</p><div class="tags"><span>Angular</span><span>OpenAI API</span><span>TypeScript</span><span>Real-Time</span></div></div>
+      <div class="tile t-half t-amber rs d4"><span class="ico">🎙️</span><h3>Voice-Based Email System</h3><span class="meta">University · 2020 · Team Lead</span><p>Voice-Command Email System — Compose, Check, Search, and Delete emails via voice instructions using Python.</p><div class="tags"><span>Python</span><span>PyAudio</span><span>NLP</span></div></div>
 
       <!-- Bottom row — halves -->
-      <div class="tile t-half t-rose rs d5"><span class="ico">😷</span><h3>Face Mask Detection</h3><span class="meta">University · 2020 · Team Lead</span><p>Real-time CNN face mask detection using OpenCV for public safety — airports, offices, schools.</p><div class="tags"><span>Python</span><span>CNN</span><span>OpenCV</span><span>Google Colab</span></div></div>
-      <div class="tile t-half t-sky rs d6"><span class="ico">😴</span><h3>Driver Drowsiness Detection</h3><span class="meta">University · 2019 · Team Lead</span><p>Raspberry Pi + OpenCV real-time drowsiness detection with automatic alarm alerts for long-distance travel safety.</p><div class="tags"><span>Raspberry Pi</span><span>OpenCV</span><span>Python</span><span>IoT</span></div></div>
+      <div class="tile t-half t-rose rs d5"><span class="ico">😷</span><h3>Face Mask Detection</h3><span class="meta">University · 2020 · Team Lead</span><p>Real-Time CNN Face Mask Detection using OpenCV for public safety — airports, offices, schools.</p><div class="tags"><span>Python</span><span>CNN</span><span>OpenCV</span><span>Google Colab</span></div></div>
+      <div class="tile t-half t-sky rs d6"><span class="ico">😴</span><h3>Driver Drowsiness Detection</h3><span class="meta">University · 2019 · Team Lead</span><p>Raspberry Pi + OpenCV Real-Time Drowsiness Detection with automatic alarm alerts for long-distance travel safety.</p><div class="tags"><span>Raspberry Pi</span><span>OpenCV</span><span>Python</span><span>IoT</span></div></div>
     </div>
   </div>
 </section>
@@ -746,9 +923,9 @@ footer .fl a:hover{color:var(--blue)}
     </div>
     <h3 class="credh r">Awards</h3>
     <div class="awards">
-      <div class="award r d1"><span class="ai">🏆</span><div><h4>Client Delight Award</h4><p>Sails Software Solutions — Best Performer for MMS project, real-time data solutions &amp; production support.</p></div></div>
-      <div class="award r d2"><span class="ai">⭐</span><div><h4>Employee of the Month</h4><p>Sails Software Solutions — Outstanding UI development, code refactoring.</p></div></div>
-      <div class="award r d3"><span class="ai">🎓</span><div><h4>Pratibha Award</h4><p>Andhra Pradesh Government — State-level academic excellence recognition.</p></div></div>
+      <div class="award r d1"><span class="ai">🏆</span><div><h4>Client Delight Award</h4><p>Sails Software Solutions — Best Performer for MMS Project, Real-Time Data Solutions &amp; Production Support.</p></div></div>
+      <div class="award r d2"><span class="ai">⭐</span><div><h4>Employee Of The Month</h4><p>Sails Software Solutions — Outstanding UI Development and Code Refactoring.</p></div></div>
+      <div class="award r d3"><span class="ai">🎓</span><div><h4>Pratibha Award</h4><p>Andhra Pradesh Government — State-Level Academic Excellence Recognition.</p></div></div>
     </div>
   </div>
 </section>
@@ -768,8 +945,9 @@ footer .fl a:hover{color:var(--blue)}
 <footer><p>Designed &amp; Built by Ravi Kiran Pilli &copy; 2026</p><div class="fl"><a href="mailto:mail2pilliravikiran@gmail.com">Email</a><a href="https://www.linkedin.com/in/ravikiranpilli/" target="_blank">LinkedIn</a></div></footer>
 
 <!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+<button class="scroll-top" id="scrollTop" onclick="flyToTop()" aria-label="Scroll to top">
   <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 16V4M4 10l6-6 6 6"/></svg>
+  <span class="rocket" aria-hidden="true">🚀</span>
 </button>
 
 <!-- OVERLAY -->
@@ -778,30 +956,32 @@ footer .fl a:hover{color:var(--blue)}
     <button class="ov-x" onclick="closeOv()">✕</button>
     <div class="tabs"><button class="a" data-tab="resume" onclick="swTab('resume')">Resume</button><button data-tab="coverletter" onclick="swTab('coverletter')">Cover Letter</button></div>
     <div class="tp a" id="tab-resume">
-      <div class="rh"><h2>Ravi Kiran Pilli</h2><div class="rt">AI Full Stack Engineer</div><div class="rc">Jersey City, NJ · 201-912-6639 · <a href="mailto:mail2pilliravikiran@gmail.com">mail2pilliravikiran@gmail.com</a></div></div>
-      <div class="rs"><div class="rsl">Professional Summary</div><div class="rb"><p>AI Full Stack Engineer with 3+ years building pharmacy management applications in healthcare-regulated environments. Deep domain knowledge in pharmacy workflows including prescription processing, eRx automation, inventory management, drug price updates, EDI transactions, delivery modules, tenant migrations, and patient engagement. Built an AI-powered quiz platform from scratch with dynamic question generation and real-time scoring for 300+ participants.</p></div></div>
-      <div class="rs"><div class="rsl">Technical Skills</div><div class="rb"><div class="rsk"><span>C#</span><span>ASP.NET Core</span><span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>SQL Server</span><span>Elasticsearch</span><span>MongoDB</span><span>Azure</span><span>Auth0</span><span>Dapper</span><span>NodaTime</span><span>Apache Kafka</span><span>Jenkins</span><span>Azure DevOps</span><span>HTML5</span><span>CSS3</span><span>RESTful APIs</span><span>JWT</span><span>OAuth2</span><span>WebAuthn</span><span>n8n</span><span>Git</span><span>NUnit</span><span>xUnit</span><span>Agile Scrum</span></div></div></div>
+      <div class="resume-dl">
+        <a href="Ravi_Kiran_Pilli_AI_FullStack_Resume.docx" download="Ravi_Kiran_Pilli_AI_FullStack_Resume.docx"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v9M3 7l4 4 4-4M2 13h10"/></svg>Download DOCX</a>
+      </div>
+      <div class="rs"><div class="rsl">Professional Summary</div><div class="rb"><p>AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem — shipping production software across PrimeRx, PrimeRx Market, POS, MyPrimeRx, and ePrimeRx. Deep domain expertise across Prescription Processing, eRx Automation, Inventory Management, Drug Price Updates, EDI Transactions, Insurance Eligibility, Delivery and Shipping, Tenant Migration, 340B Compliance, Compounding Rx, and Patient Engagement on PWA Architecture. Strong full-stack foundations in Angular, .NET (C#, ASP.NET Core), SQL Server, Elasticsearch, Kafka, Azure, Auth0/WebAuthn, paired with daily AI-augmented engineering using Claude Code, ChatGPT, Cursor, GitHub Copilot, Google Antigravity and direct integration of OpenAI, Anthropic, Gemini, LangChain, RAG/Embeddings into product features. Built an AI-Powered Quiz Platform from scratch in Angular with dynamic question generation and real-time scoring for 300+ participants.</p></div></div>
+      <div class="rs"><div class="rsl">Technical Skills</div><div class="rb"><div class="rsk"><span>C#</span><span>ASP.NET Core</span><span>.NET</span><span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>HTML5</span><span>CSS3</span><span>PWA</span><span>RxJS</span><span>SQL Server</span><span>Elasticsearch</span><span>MongoDB</span><span>Apache Kafka</span><span>Azure</span><span>Azure DevOps</span><span>CI/CD</span><span>Jenkins</span><span>IIS</span><span>Auth0</span><span>WebAuthn</span><span>JWT</span><span>OAuth2</span><span>SSO</span><span>MFA</span><span>Dapper</span><span>NodaTime</span><span>RESTful APIs</span><span>EDI</span><span>Claude Code</span><span>ChatGPT</span><span>Cursor</span><span>GitHub Copilot</span><span>Google Antigravity</span><span>Gamma</span><span>OpenAI API</span><span>Anthropic API</span><span>Gemini</span><span>LangChain</span><span>RAG</span><span>Embeddings</span><span>Pinecone</span><span>n8n</span><span>OpenCV</span><span>CNN</span><span>PrimeRx</span><span>PrimeRx Market</span><span>MyPrimeRx</span><span>POS</span><span>340B</span><span>Compounding Rx</span><span>eRx</span><span>Git</span><span>NUnit</span><span>xUnit</span><span>Agile Scrum</span></div></div></div>
       <div class="rs"><div class="rsl">Work Experience</div>
-        <div class="rb"><h4>PrimeRx (Micro Merchant Systems)</h4><h5>PrimeRx Cloud, Patient Engagement</h5><span class="rm">Software Engineer · March 2026 – Present</span><ul><li>Designing, developing, and maintaining pharmacy management software using C#, ASP.NET Core, SQL Server, Angular.</li><li>Leading codebase-wide timezone migration — UTC storage with NodaTime/IANA, SQL Server AT TIME ZONE, Angular localization.</li><li>Datetime localization across 300+ screens with interceptor-based and service-based approaches.</li><li>Fixed SQL Server connection leaking by refactoring retry pipeline scoping and async patterns.</li><li>Optimized Auth0 — WebAuthn/passkey biometric flows, phone MFA, email OTP, SSO certs.</li><li>EDI transaction processing for pharmacy billing, insurance claims, real-time eligibility verification.</li><li>Tenant migration scripts for drug/patient data; drug price update workflows.</li><li>eRx automation, Eyecon integration, pharmacy delivery module development.</li></ul></div>
-        <div class="rb"><h4>PrimeRx (Micro Merchant Systems)</h4><h5>PrimeRx Cloud, Patient Engagement</h5><span class="rm">Software Engineer Intern · May 2025 – Dec 2025</span><ul><li>Optimized Elasticsearch multi-search queries — ~30% faster prescription lookup.</li><li>RESTful APIs using ASP.NET Core for real-time prescription processing.</li><li>Built Patient Engagement Platform: biometric login, Rx refills, insurance, pharmacy chat.</li><li>PrimeRx Cloud modernization — centralized processing, cross-location sync.</li><li>Debugged production issues — API latency, data mapping, UI state sync.</li></ul></div>
-        <div class="rb"><h4>Sails Software Solutions</h4><h5>ePrimeRx</h5><span class="rm">.NET Full Stack Developer · May 2021 – July 2023</span><ul><li>Pharmacy system functionalities using C#, .NET, SSMS, Elasticsearch.</li><li>Delivery Module design; automated eRx processing; legacy migration to Angular/.NET Core.</li><li>CI/CD with Azure DevOps/Jenkins; event-driven architecture with Kafka.</li><li>Secure APIs with OAuth2 and role-based access control; Azure + IIS deployment.</li></ul></div>
+        <div class="rb"><h4>RedSail Technologies (formerly PrimeRx by Micro Merchant Systems)</h4><h5>PrimeRx Cloud · Patient Engagement · PrimeRx Market · POS · MyPrimeRx</h5><span class="rm">AI-Powered Full Stack Engineer · March 2026 – Present</span><ul><li>Designing, developing, and maintaining pharmacy management software across the PrimeRx Ecosystem using C#, ASP.NET Core, SQL Server, and Angular.</li><li>Building Patient Engagement on a PWA Architecture — appless install, push notifications, offline-first refills — eliminating native app-store distribution.</li><li>Implementing 340B Compliance and Compounding Rx workflows — split-billing logic, drug-price tier handling, audit trails for covered entities.</li><li>Leading codebase-wide Timezone Migration — UTC storage with NodaTime/IANA, SQL Server AT TIME ZONE, Angular Localization.</li><li>Datetime Localization across 300+ screens via interceptor-based and service-based approaches.</li><li>Fixed SQL Server Connection Leaks by refactoring retry pipeline scoping and async patterns.</li><li>Optimized Auth0 — WebAuthn/Passkey Biometric Flows, Phone MFA, Email OTP, SSO Certs.</li><li>EDI Transaction Processing for pharmacy billing, insurance claims, and real-time Eligibility Verification.</li><li>Tenant Migration Scripts for drug/patient data; Drug Price Update workflows.</li><li>eRx Automation, Eyecon Integration, Delivery and Shipping Feature development.</li><li>AI-augmented engineering using Claude Code, Cursor, ChatGPT, GitHub Copilot, and Google Antigravity to accelerate feature delivery, refactors, and code review.</li></ul></div>
+        <div class="rb"><h4>PrimeRx (Micro Merchant Systems)</h4><h5>PrimeRx Cloud · Patient Engagement</h5><span class="rm">Software Engineer Intern · May 2025 – Dec 2025</span><ul><li>Optimized Elasticsearch Multi-Search queries — ~30% faster Prescription Lookup.</li><li>Built RESTful APIs in ASP.NET Core for real-time Prescription Processing.</li><li>Built Patient Engagement Platform: Biometric Login, Rx Refills, Insurance Management, Pharmacy Chat.</li><li>Contributed to PrimeRx Cloud Modernization — centralized processing, cross-location sync.</li><li>Debugged production issues — API latency, data mapping, UI state synchronization.</li></ul></div>
+        <div class="rb"><h4>Sails Software Solutions</h4><h5>ePrimeRx (PrimeRx Ecosystem)</h5><span class="rm">.NET Full Stack Developer · May 2021 – July 2023</span><ul><li>Pharmacy System functionalities using C#, .NET, SSMS, Elasticsearch.</li><li>Designed Delivery and Shipping Feature; automated eRx Processing; led legacy migration to Angular / .NET Core.</li><li>CI/CD with Azure DevOps and Jenkins; Event-Driven Architecture with Apache Kafka.</li><li>Secured APIs with OAuth2 and Role-Based Access Control; Azure + IIS deployment.</li><li>Integrated Barcode Scanning and Label Printing workflows for prescription dispensing operations, reducing manual entry errors and accelerating fill times.</li><li>Built Audit Logging and User Activity Tracking modules to support regulatory compliance and traceability across pharmacy workflows.</li><li>Implemented Role-Based Dashboards with customized views for pharmacists, technicians, and managers, improving daily operational efficiency.</li><li>Optimized Angular application performance through Lazy Loading, OnPush change detection, and bundle-size analysis — improving initial page load by ~25%.</li><li>Created and optimized SQL queries, Stored Procedures, and database operations using ADO.NET and SQL Server.</li><li>Authored detailed API Documentation with Swagger for easy integration and developer support.</li><li>Mentored junior developers, conducted code reviews, and championed best practices across teams.</li></ul></div>
       </div>
       <div class="rs"><div class="rsl">Education</div>
         <div class="rb"><h4>M.S. in Computer Science</h4><h5>Montclair State University</h5><span class="rm">2024 Jan – 2025 Dec · GPA: 3.9/4.0</span></div>
         <div class="rb"><h4>B.Tech in Computer Science Engineering</h4><h5>IIIT Nuzvid (RGUKT), AP, India</h5><span class="rm">2017 – 2021 · GPA: 8.5/10</span></div>
       </div>
       <div class="rs"><div class="rsl">Certifications</div><div class="rb"><ul><li>Microsoft Azure Fundamentals</li><li>Google AI Essentials</li><li>Unit Testing .NET 9 with xUnit .NET v3</li></ul></div></div>
-      <div class="rs"><div class="rsl">Honors &amp; Awards</div><div class="rb"><ul><li><strong>Client Delight Award</strong> — Sails: Best Performer for MMS project.</li><li><strong>Employee of the Month</strong> — Sails: Outstanding UI development.</li><li><strong>Pratibha Award</strong> — AP Government: State-level academic excellence.</li></ul></div></div>
+      <div class="rs"><div class="rsl">Honors &amp; Awards</div><div class="rb"><ul><li>Client Delight Award — Sails Software Solutions: Best Performer for MMS Project.</li><li>Employee Of The Month — Sails Software Solutions: Outstanding UI Development.</li><li>Pratibha Award — AP Government: State-Level Academic Excellence.</li></ul></div></div>
     </div>
     <div class="tp" id="tab-coverletter">
       <div class="clb">
-        <h3>Ravi Kiran Pilli</h3><span class="clt">AI Full Stack Engineer</span>
+        <h3>Ravi Kiran Pilli</h3><span class="clt">AI-Powered Full Stack Engineer</span>
         <p>Dear Hiring Manager,</p>
-        <p>I'm writing to express my interest in a Full-Stack / Software Engineer position. With 3+ years building healthcare pharmacy management software using Angular, .NET, SQL Server, and Azure — combined with a Master's in Computer Science (3.9 GPA) — I bring deep domain expertise, modern cloud architecture skills, and passion for AI-driven solutions.</p>
-        <p>At PrimeRx, I've led initiatives impacting product quality and scale: timezone migration spanning 300+ screens, secure patient authentication with Auth0 WebAuthn biometrics and MFA, and Elasticsearch optimizations improving prescription lookup by 30%. I've also fixed critical infrastructure issues like SQL Server connection leaks and non-idempotent retry pipelines.</p>
-        <p>Beyond my core role, I built an AI-powered quiz platform in Angular from scratch — AI APIs for dynamic question generation and real-time scoring for 300+ participants. I've explored n8n workflow automation for AI content pipelines.</p>
-        <p>My earlier experience at Sails Software Solutions deepened my full-stack foundations — pharmacy delivery modules, eRx automation, Kafka event-driven architectures, and CI/CD with Azure DevOps.</p>
-        <p>I'm drawn to teams valuing engineering rigor, thoughtful architecture, and continuous innovation. I'd welcome bringing my skills to your team.</p>
+        <p>I'm writing to express my interest in a Full-Stack / Software Engineer position. With 3.5+ years in the Pharmacy Ecosystem — shipping production code across PrimeRx, PrimeRx Market, POS, MyPrimeRx, and ePrimeRx using Angular, .NET, SQL Server, Azure, and AI — combined with a Master's in Computer Science (3.9 GPA), I bring deep healthcare-domain expertise, modern cloud architecture skills, and a working AI toolchain I use every day.</p>
+        <p>I started in this ecosystem at Sails Software Solutions, building ePrimeRx — pharmacy delivery, eRx automation, Kafka event-driven flows, and CI/CD on Azure DevOps. After completing my Master's, I returned to the PrimeRx ecosystem directly at RedSail Technologies (formerly PrimeRx), where I'm now building Patient Engagement on a PWA Architecture — appless, install-from-browser, no app-store distribution required — alongside 340B Compliance and Compounding Rx workflows for covered entities.</p>
+        <p>At RedSail/PrimeRx, I've led initiatives impacting product quality and scale: timezone migration spanning 300+ screens, secure patient authentication with Auth0 WebAuthn biometrics and MFA, EDI transaction processing for billing and eligibility, and Elasticsearch optimizations improving prescription lookup by 30%. I've also fixed critical infrastructure issues like SQL Server connection leaks and non-idempotent retry pipelines.</p>
+        <p>Beyond core delivery, I work AI-first: I use Claude Code, Cursor, ChatGPT, GitHub Copilot, and Google Antigravity daily to accelerate feature work, refactors, and reviews. I've integrated OpenAI, Anthropic, and Gemini APIs, explored LangChain, RAG, embeddings, and Pinecone for retrieval-augmented features, and explored n8n for automated content and operational pipelines. My AI-Powered Quiz Platform — built in Angular from scratch with dynamic question generation and real-time scoring — served 300+ live participants.</p>
+        <p>I'm drawn to teams that value engineering rigor, thoughtful architecture, and continuous innovation — and I'd welcome the chance to bring this combination of pharmacy-domain depth, full-stack execution, and AI-augmented engineering to your team.</p>
         <p>Thank you for your time and consideration.</p>
         <div class="sign">— Ravi Kiran Pilli</div>
       </div>
@@ -810,7 +990,7 @@ footer .fl a:hover{color:var(--blue)}
 </div>
 
 <script>
-// Progress
+// Scroll progress
 window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('sp').style.width=(window.scrollY/h*100)+'%'},{passive:true});
 
 // Reveal — replay every time
@@ -818,7 +998,7 @@ const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.targ
 document.querySelectorAll('.r,.rs,.rl,.rr').forEach(el=>obs.observe(el));
 
 // Counters — replay every scroll
-const cObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=parseFloat(x.target.dataset.count);const dec=x.target.dataset.dec==='1';const suf=t===3?'+':t===300?'+':t===30?'%':'';x.target.textContent='0';const dur=1500;const s=performance.now();!function f(n){const p=Math.min((n-s)/dur,1);const v=(1-Math.pow(1-p,4))*t;x.target.textContent=dec?v.toFixed(1):Math.round(v)+suf;p<1&&requestAnimationFrame(f)}(s)}else{x.target.textContent='0'}})},{threshold:.4});
+const cObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=parseFloat(x.target.dataset.count);const dec=x.target.dataset.dec==='1';const suf=t===3.5?'+':t===300?'+':t===30?'%':'';x.target.textContent='0';const dur=1500;const s=performance.now();!function f(n){const p=Math.min((n-s)/dur,1);const v=(1-Math.pow(1-p,4))*t;x.target.textContent=(dec?v.toFixed(1):Math.round(v))+suf;p<1&&requestAnimationFrame(f)}(s)}else{x.target.textContent='0'}})},{threshold:.4});
 document.querySelectorAll('.met-n').forEach(el=>cObs.observe(el));
 
 // Nav scroll
@@ -834,6 +1014,39 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOv()});
 // Mobile nav
 function toggleMob(){document.getElementById('mobNav').classList.add('open')}
 function closeMob(){document.getElementById('mobNav').classList.remove('open')}
+
+// 🚀 Cool scroll-to-top: rocket launch + particle burst + page rewind blur
+function flyToTop(){
+  const btn=document.getElementById('scrollTop');
+  if(btn.classList.contains('launching'))return;
+  const r=btn.getBoundingClientRect();
+  const cx=r.left+r.width/2,cy=r.top+r.height/2;
+  const colors=['#0071e3','#5856d6','#ff375f','#ff9f0a','#30d158','#64d2ff','#af52de','#ffd60a','#63e6be'];
+  for(let i=0;i<32;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const sz=4+Math.random()*9;
+    p.style.width=p.style.height=sz+'px';
+    p.style.left=(cx-sz/2)+'px';
+    p.style.top=(cy-sz/2)+'px';
+    const col=colors[Math.floor(Math.random()*colors.length)];
+    p.style.background=col;p.style.color=col;
+    const angle=-Math.PI/2+(Math.random()-0.5)*Math.PI*0.85;
+    const dist=120+Math.random()*340;
+    p.style.setProperty('--tx',(Math.cos(angle)*dist)+'px');
+    p.style.setProperty('--ty',(Math.sin(angle)*dist)+'px');
+    p.style.animationDelay=(Math.random()*0.18)+'s';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),1600);
+  }
+  btn.classList.add('launching');
+  document.body.classList.add('page-rewinding');
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(()=>{
+    btn.classList.remove('launching');
+    document.body.classList.remove('page-rewinding');
+  },1000);
+}
 </script>
 </body>
 </html>

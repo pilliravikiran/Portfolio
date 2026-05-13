@@ -214,9 +214,14 @@
     msgsEl.scrollTop = msgsEl.scrollHeight;
   }
 
+  const isTouchDevice = () =>
+    window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
   function open() {
     panel.classList.add("open");
-    setTimeout(() => inputEl.focus(), 100);
+    if (!isTouchDevice()) {
+      setTimeout(() => inputEl.focus(), 100);
+    }
     if (!opened) {
       addBubble(CONFIG.GREETING, "bot");
       renderSuggestions();
@@ -264,7 +269,7 @@
     } finally {
       typing.style.display = "none";
       sendBtn.disabled = false;
-      inputEl.focus();
+      if (!isTouchDevice()) inputEl.focus();
     }
   });
 })();

@@ -24,9 +24,10 @@
   // -----------------------------------------------------------
   const CONFIG = {
     API_URL: "https://portfoliobot-api.onrender.com/chat",   // <-- change to your deployed API
-    BOT_NAME: "PortfolioBot",
+    BOT_NAME: "Ravi's Assistant",
+    BOT_TAGLINE: "Here to help · usually replies instantly",
     GREETING:
-      "Hi 👋 I'm PortfolioBot — ask me anything about Ravi (skills, experience, projects, contact) or just chat about anything else!",
+      "Hi 👋 I'm Ravi's assistant — ask me anything about his skills, experience, projects, or how to get in touch!",
     PRIMARY: "linear-gradient(135deg,#0071e3,#5856d6)",
     POSITION: { right: "24px", bottom: "24px" },
   };
@@ -48,6 +49,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     .rb-fab:hover { transform: scale(1.08); }
+    .rb-fab.hidden { display: none; }
     .rb-fab .rb-pulse {
       position: absolute; inset: -6px; border-radius: 50%;
       border: 2px solid rgba(88,86,214,.45);
@@ -150,8 +152,8 @@
   panel.innerHTML = `
     <div class="rb-head">
       <div>
-        <h4>🤖 ${CONFIG.BOT_NAME}</h4>
-        <div class="sub">AI assistant · ask me anything</div>
+        <h4>${CONFIG.BOT_NAME}</h4>
+        <div class="sub">${CONFIG.BOT_TAGLINE}</div>
       </div>
       <button class="rb-close" aria-label="Close">✕</button>
     </div>
@@ -219,6 +221,7 @@
 
   function open() {
     panel.classList.add("open");
+    fab.classList.add("hidden");
     if (!isTouchDevice()) {
       setTimeout(() => inputEl.focus(), 100);
     }
@@ -228,7 +231,10 @@
       opened = true;
     }
   }
-  function close() { panel.classList.remove("open"); }
+  function close() {
+    panel.classList.remove("open");
+    fab.classList.remove("hidden");
+  }
 
   fab.addEventListener("click", () => {
     panel.classList.contains("open") ? close() : open();

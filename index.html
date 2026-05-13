@@ -405,6 +405,74 @@ body.intro-active{overflow:hidden}
 .t-feat .ico{display:none}
 .t-feat-right{flex:1;position:relative;z-index:2}
 
+/* FEATURED — PortfolioBot — indigo / violet, chat-thread visual */
+.t-feat-bot{background:linear-gradient(135deg,#ffffff 0%,#f3f1ff 55%,#ddd3ff 100%)}
+.t-feat-bot::before{background:radial-gradient(circle at 88% 45%,rgba(124,58,237,.22),transparent 55%)}
+.t-feat-bot::after{background:linear-gradient(90deg,#5e5ce6,#7c3aed,#0071e3)}
+.t-feat-bot .meta{color:#5e5ce6}
+
+.chat-thread{
+  position:relative;width:210px;height:200px;flex-shrink:0;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+  padding:10px;z-index:2;
+}
+.chat-msg{
+  position:relative;z-index:2;font-size:11px;font-weight:500;line-height:1.35;
+  padding:8px 12px;border-radius:14px;max-width:78%;
+  display:inline-flex;align-items:center;gap:6px;
+  background:#fff;border:1px solid rgba(94,92,230,.18);
+  box-shadow:0 4px 14px rgba(94,92,230,.16);
+  opacity:0;transform:translateY(10px);
+  animation:chatPop .55s var(--spring) forwards;
+}
+.chat-msg.user{
+  align-self:flex-end;color:#fff;border:none;
+  background:linear-gradient(135deg,#5e5ce6,#7c3aed);
+  border-bottom-right-radius:4px;
+  box-shadow:0 4px 14px rgba(94,92,230,.32);
+  animation-delay:.3s;
+}
+.chat-msg.bot{
+  align-self:flex-start;color:#1d1d1f;
+  border-bottom-left-radius:4px;animation-delay:.9s;
+}
+.chat-msg.bot .avatar{
+  width:18px;height:18px;border-radius:50%;
+  background:linear-gradient(135deg,#5e5ce6,#0071e3);color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;flex-shrink:0;
+}
+.chat-msg.typing{
+  align-self:flex-start;padding:10px 14px;gap:4px;
+  animation-delay:1.6s;
+}
+.chat-msg.typing .dot{
+  width:5px;height:5px;border-radius:50%;background:#5e5ce6;
+  display:inline-block;animation:typingDot 1.3s infinite;
+}
+.chat-msg.typing .dot:nth-child(2){animation-delay:.2s}
+.chat-msg.typing .dot:nth-child(3){animation-delay:.4s}
+@keyframes chatPop{to{opacity:1;transform:translateY(0)}}
+@keyframes typingDot{0%,80%,100%{transform:scale(.55);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+.thread-bg-icon{
+  position:absolute;width:32px;height:32px;border-radius:10px;
+  background:#fff;border:1px solid rgba(94,92,230,.20);
+  box-shadow:0 4px 14px rgba(94,92,230,.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;z-index:1;pointer-events:none;
+  animation:floatBadge 4.5s ease-in-out infinite;
+}
+.thread-bg-icon:hover{transform:scale(1.15)}
+.tbi1{top:-6px;left:-14px;animation-delay:0s}
+.tbi2{top:14px;right:-16px;animation-delay:1.1s}
+.tbi3{bottom:18px;left:-18px;animation-delay:2.2s}
+.tbi4{bottom:-4px;right:-12px;animation-delay:3.3s}
+@keyframes floatBadge{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-10px) rotate(3deg)}
+}
+
 /* CLOUD ORBIT ANIMATION */
 .cloud-orbit{position:relative;width:180px;height:180px;flex-shrink:0;display:flex;align-items:center;justify-content:center;z-index:2}
 .cloud-core{font-size:60px;position:relative;z-index:3;animation:cloudPulse 4s ease-in-out infinite;filter:drop-shadow(0 0 24px rgba(41,151,255,.55))}
@@ -876,6 +944,7 @@ img,svg{max-width:100%;height:auto}
       <div class="about-text">
         <p>I'm Ravi Kiran — an AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem. My signature is the unglamorous engineering work that keeps healthcare-grade systems running: a codebase-wide Timezone Migration with NodaTime/IANA spanning 300+ screens, hardening Auth0 with WebAuthn passkeys and MFA, fixing SQL Server connection leaks in non-idempotent retry pipelines, and standing up EDI transaction processing for billing and eligibility.</p>
         <p>Beyond that I've shipped event-driven Kafka pipelines, Eyecon integration for pill verification, 340B compliance, Compounding Rx workflows, and a Patient Engagement platform built on PWA architecture — all with AI tools (Claude Code, Cursor, Copilot) woven into the daily loop.</p>
+        <p>On the <strong>Generative AI</strong> side I build end-to-end LLM applications: <strong>PortfolioBot</strong> — the chat assistant on this page — is a production RAG system I designed from scratch (FastAPI, OpenAI GPT-4o-mini, text-embedding-3-small, ChromaDB) with a custom Router that classifies Personal vs General questions and returns cited sources. I'm hands-on with Retrieval-Augmented Generation, Vector Databases (ChromaDB, Pinecone), Embeddings &amp; Semantic Search, Prompt Engineering, and OpenAI / Anthropic / Gemini API integration across FastAPI &amp; Python backends.</p>
       </div>
     </div>
     <div class="rr">
@@ -917,7 +986,7 @@ img,svg{max-width:100%;height:auto}
       <div class="sk-card r d2"><h3><span class="dot dp"></span>Backend</h3><div class="chips"><span class="chip cp">C#</span><span class="chip cp">ASP.NET Core</span><span class="chip cp">.NET</span><span class="chip cp">RESTful APIs</span><span class="chip cp">Dapper</span><span class="chip cp">ADO.NET</span><span class="chip cp">NodaTime</span><span class="chip cp">Python</span></div></div>
       <div class="sk-card r d3"><h3><span class="dot dt"></span>Data &amp; Cloud</h3><div class="chips"><span class="chip ct">SQL Server</span><span class="chip ct">Elasticsearch</span><span class="chip ct">MongoDB</span><span class="chip ct">Azure</span><span class="chip ct">Azure DevOps</span><span class="chip ct">CI/CD</span><span class="chip ct">Apache Kafka</span></div></div>
       <div class="sk-card r d4"><h3><span class="dot dg"></span>AI Coding Tools</h3><div class="chips"><span class="chip cg">Claude Code</span><span class="chip cg">ChatGPT</span><span class="chip cg">Cursor</span><span class="chip cg">GitHub Copilot</span><span class="chip cg">Google Antigravity</span><span class="chip cg">Gamma</span></div></div>
-      <div class="sk-card r d5"><h3><span class="dot dg"></span>AI APIs &amp; Frameworks</h3><div class="chips"><span class="chip cg">OpenAI API</span><span class="chip cg">Anthropic API</span><span class="chip cg">Gemini</span><span class="chip cg">LangChain</span><span class="chip cg">RAG</span><span class="chip cg">Embeddings</span><span class="chip cg">Pinecone</span></div></div>
+      <div class="sk-card r d5"><h3><span class="dot dg"></span>Generative AI &amp; RAG</h3><div class="chips"><span class="chip cg">Generative AI</span><span class="chip cg">LLM Apps</span><span class="chip cg">RAG</span><span class="chip cg">Vector DBs</span><span class="chip cg">ChromaDB</span><span class="chip cg">Pinecone</span><span class="chip cg">Embeddings</span><span class="chip cg">Semantic Search</span><span class="chip cg">Prompt Engineering</span><span class="chip cg">OpenAI API</span><span class="chip cg">Anthropic API</span><span class="chip cg">Gemini</span><span class="chip cg">LangChain</span><span class="chip cg">FastAPI</span></div></div>
       <div class="sk-card r d6"><h3><span class="dot dg"></span>Automation &amp; Workflows</h3><div class="chips"><span class="chip cg">n8n</span><span class="chip cg">OpenCV</span><span class="chip cg">CNN</span><span class="chip cg">Python</span></div></div>
       <div class="sk-card r d1"><h3><span class="dot do"></span>Auth &amp; Security</h3><div class="chips"><span class="chip co">Auth0</span><span class="chip co">JWT</span><span class="chip co">OAuth2</span><span class="chip co">WebAuthn</span><span class="chip co">SSO</span><span class="chip co">MFA</span></div></div>
       <div class="sk-card r d2"><h3><span class="dot dk"></span>Pharmacy Domain</h3><div class="chips"><span class="chip ck">PMS</span><span class="chip ck">Wholesale Market</span><span class="chip ck">Patient App</span><span class="chip ck">POS</span><span class="chip ck">340B</span><span class="chip ck">Compounding Rx</span><span class="chip ck">eRx</span><span class="chip ck">EDI</span></div></div>
@@ -955,7 +1024,7 @@ img,svg{max-width:100%;height:auto}
   <div class="cwide">
     <p class="eyebrow r">Projects</p>
     <h2 class="heading heading-w r">What I've built.</h2>
-    <p class="subtext sub-w r">Enterprise pharmacy platforms to personal AI experiments.</p>
+    <p class="subtext sub-w r">Production RAG assistants, enterprise pharmacy platforms, and AI applications.</p>
     <div class="bento">
       <!-- FEATURED: PMS Cloud -->
       <div class="tile t-feat rs">
@@ -977,6 +1046,20 @@ img,svg{max-width:100%;height:auto}
           </div>
         </div>
         <div class="t-feat-right"><h3>Pharmacy Cloud Ecosystem</h3><span class="meta">RedSail · 2025–Present</span><p>Cloud Modernization across PMS, Wholesale Market Integration, POS for Checkout, and Patient App — centralized Prescription Processing, distributed Elasticsearch Search, real-time Transaction Handling, 340B Compliance, Compounding Rx workflows, and cross-location synchronization over legacy on-prem systems.</p><div class="tags"><span>Azure</span><span>ASP.NET Core</span><span>Elasticsearch</span><span>Kafka</span><span>SQL Server</span><span>340B</span></div></div></div>
+
+      <!-- FEATURED: PortfolioBot — live RAG assistant on this page -->
+      <div class="tile t-feat t-feat-bot rs">
+        <div class="chat-thread">
+          <div class="thread-bg-icon tbi1">🧠</div>
+          <div class="thread-bg-icon tbi2">📚</div>
+          <div class="thread-bg-icon tbi3">🔍</div>
+          <div class="thread-bg-icon tbi4">⚡</div>
+          <div class="chat-msg user">Who is Ravi?</div>
+          <div class="chat-msg bot"><span class="avatar">R</span>Hi 👋 I'm Ravi's assistant…</div>
+          <div class="chat-msg typing"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        </div>
+        <div class="t-feat-right"><h3>PortfolioBot — GenAI Assistant</h3><span class="meta">Personal · 2026 · Live on this site</span><p>The chat widget on this very page — a Retrieval-Augmented Generation (RAG) assistant grounded in my own resume, experience, and projects. Built end-to-end: FastAPI backend on OpenAI GPT-4o-mini, text-embedding-3-small for semantic search, ChromaDB persistent vector store, and a custom Router that classifies questions as Personal (RAG-grounded with cited sources) vs General (direct LLM). Embeddable vanilla-JS widget on the frontend, CORS-locked, deployed on Render.</p><div class="tags"><span>Generative AI</span><span>RAG</span><span>OpenAI GPT-4o-mini</span><span>ChromaDB</span><span>Embeddings</span><span>FastAPI</span><span>Python</span><span>Render</span></div></div>
+      </div>
 
       <!-- 8+4 -->
       <div class="tile t-wide rs d1"><span class="ico">💊</span><h3>Patient App (PWA)</h3><span class="meta">RedSail · 2025–Present</span><p>Patient-facing pharmacy platform on PWA Architecture — Biometric Login (Face ID), Rx Refills, Rx History, Insurance Management, Due-Date Tracking, Pharmacy Chat, Medication Profiles. Appless install, no app store needed.</p><div class="tags"><span>Angular PWA</span><span>ASP.NET Core</span><span>Auth0</span><span>Elasticsearch</span></div></div>
@@ -1041,12 +1124,16 @@ img,svg{max-width:100%;height:auto}
       <div class="resume-dl">
         <a href="Ravi_Kiran_Pilli_AI_FullStack_Resume.docx" download="Ravi_Kiran_Pilli_AI_FullStack_Resume.docx"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v9M3 7l4 4 4-4M2 13h10"/></svg>Download DOCX</a>
       </div>
-      <div class="rs"><div class="rsl">Professional Summary</div><div class="rb"><p>AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem — shipping production software across PMS, Wholesale Market Integration, POS for Checkout, and Patient App. Deep domain expertise across Prescription Processing, eRx Automation, Inventory Management, Drug Price Updates, EDI Transactions, Insurance Eligibility, Delivery and Shipping, Tenant Migration, 340B Compliance, Compounding Rx, and Patient Engagement on PWA Architecture. Strong full-stack foundations in Angular, .NET (C#, ASP.NET Core), SQL Server, Elasticsearch, Kafka, Azure, Auth0/WebAuthn, paired with daily AI-augmented engineering using Claude Code, ChatGPT, Cursor, GitHub Copilot, Google Antigravity and direct integration of OpenAI, Anthropic, Gemini, LangChain, RAG/Embeddings into product features. Built an AI-Powered Quiz Platform from scratch in Angular with dynamic question generation and real-time scoring for 300+ participants.</p></div></div>
-      <div class="rs"><div class="rsl">Technical Skills</div><div class="rb"><div class="rsk"><span>C#</span><span>ASP.NET Core</span><span>.NET</span><span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>HTML5</span><span>CSS3</span><span>PWA</span><span>RxJS</span><span>SQL Server</span><span>Elasticsearch</span><span>MongoDB</span><span>Apache Kafka</span><span>Azure</span><span>Azure DevOps</span><span>CI/CD</span><span>Jenkins</span><span>IIS</span><span>Auth0</span><span>WebAuthn</span><span>JWT</span><span>OAuth2</span><span>SSO</span><span>MFA</span><span>Dapper</span><span>NodaTime</span><span>RESTful APIs</span><span>EDI</span><span>Claude Code</span><span>ChatGPT</span><span>Cursor</span><span>GitHub Copilot</span><span>Google Antigravity</span><span>Gamma</span><span>OpenAI API</span><span>Anthropic API</span><span>Gemini</span><span>LangChain</span><span>RAG</span><span>Embeddings</span><span>Pinecone</span><span>n8n</span><span>OpenCV</span><span>CNN</span><span>PMS</span><span>Wholesale Market</span><span>Patient App</span><span>POS</span><span>340B</span><span>Compounding Rx</span><span>eRx</span><span>Git</span><span>NUnit</span><span>xUnit</span><span>Agile Scrum</span></div></div></div>
+      <div class="rs"><div class="rsl">Professional Summary</div><div class="rb"><p>AI-Powered Full Stack Engineer with 3.5+ years in the Pharmacy Ecosystem — shipping production software across PMS, Wholesale Market Integration, POS for Checkout, and Patient App. Deep domain expertise across Prescription Processing, eRx Automation, Inventory Management, Drug Price Updates, EDI Transactions, Insurance Eligibility, Delivery and Shipping, Tenant Migration, 340B Compliance, Compounding Rx, and Patient Engagement on PWA Architecture. Strong full-stack foundations in Angular, .NET (C#, ASP.NET Core), SQL Server, Elasticsearch, Kafka, Azure, Auth0/WebAuthn, paired with daily AI-augmented engineering using Claude Code, ChatGPT, Cursor, GitHub Copilot, Google Antigravity. <strong>AI / GenAI focus areas:</strong> Generative AI, LLM Application Development, Retrieval-Augmented Generation (RAG), Vector Databases (ChromaDB, Pinecone), Embeddings &amp; Semantic Search, Prompt Engineering, OpenAI / Anthropic / Gemini API Integration, and FastAPI / Python AI Backends. Built and deployed PortfolioBot — a production RAG assistant (FastAPI + OpenAI GPT-4o-mini + ChromaDB) embedded live on this site — and an AI-Powered Quiz Platform in Angular with dynamic question generation and real-time scoring for 300+ participants.</p></div></div>
+      <div class="rs"><div class="rsl">Technical Skills</div><div class="rb"><div class="rsk"><span>C#</span><span>ASP.NET Core</span><span>.NET</span><span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>HTML5</span><span>CSS3</span><span>PWA</span><span>RxJS</span><span>SQL Server</span><span>Elasticsearch</span><span>MongoDB</span><span>Apache Kafka</span><span>Azure</span><span>Azure DevOps</span><span>CI/CD</span><span>Jenkins</span><span>IIS</span><span>Auth0</span><span>WebAuthn</span><span>JWT</span><span>OAuth2</span><span>SSO</span><span>MFA</span><span>Dapper</span><span>NodaTime</span><span>RESTful APIs</span><span>EDI</span><span>Claude Code</span><span>ChatGPT</span><span>Cursor</span><span>GitHub Copilot</span><span>Google Antigravity</span><span>Gamma</span><span>Generative AI</span><span>LLM Apps</span><span>RAG</span><span>Vector DBs</span><span>Embeddings</span><span>Semantic Search</span><span>Prompt Engineering</span><span>OpenAI API</span><span>Anthropic API</span><span>Gemini</span><span>LangChain</span><span>ChromaDB</span><span>Pinecone</span><span>FastAPI</span><span>n8n</span><span>OpenCV</span><span>CNN</span><span>PMS</span><span>Wholesale Market</span><span>Patient App</span><span>POS</span><span>340B</span><span>Compounding Rx</span><span>eRx</span><span>Git</span><span>NUnit</span><span>xUnit</span><span>Agile Scrum</span></div></div></div>
       <div class="rs"><div class="rsl">Work Experience</div>
         <div class="rb"><h4>RedSail Technologies (formerly PrimeRx)</h4><h5>PMS · Patient Engagement · Wholesale Market Integration · POS · Patient App</h5><span class="rm">AI-Powered Full Stack Engineer · March 2026 – Present</span><ul><li>Designing, developing, and maintaining pharmacy management software across the PMS Ecosystem using C#, ASP.NET Core, SQL Server, and Angular.</li><li>Building Patient Engagement on a PWA Architecture — appless install, push notifications, offline-first refills — eliminating native app-store distribution.</li><li>Implementing 340B Compliance and Compounding Rx workflows — split-billing logic, drug-price tier handling, audit trails for covered entities.</li><li>Leading codebase-wide Timezone Migration — UTC storage with NodaTime/IANA, SQL Server AT TIME ZONE, Angular Localization.</li><li>Datetime Localization across 300+ screens via interceptor-based and service-based approaches.</li><li>Fixed SQL Server Connection Leaks by refactoring retry pipeline scoping and async patterns.</li><li>Optimized Auth0 — WebAuthn/Passkey Biometric Flows, Phone MFA, Email OTP, SSO Certs.</li><li>EDI Transaction Processing for pharmacy billing, insurance claims, and real-time Eligibility Verification.</li><li>Tenant Migration Scripts for drug/patient data; Drug Price Update workflows.</li><li>eRx Automation, Eyecon Integration, Delivery and Shipping Feature development.</li><li>AI-augmented engineering using Claude Code, Cursor, ChatGPT, GitHub Copilot, and Google Antigravity to accelerate feature delivery, refactors, and code review.</li></ul></div>
         <div class="rb"><h4>PrimeRx</h4><h5>PMS · Patient Engagement</h5><span class="rm">Software Engineer Intern · May 2025 – Dec 2025</span><ul><li>Optimized Elasticsearch Multi-Search queries — ~30% faster Prescription Lookup.</li><li>Built RESTful APIs in ASP.NET Core for real-time Prescription Processing.</li><li>Built Patient Engagement Platform: Biometric Login, Rx Refills, Insurance Management, Pharmacy Chat.</li><li>Contributed to PMS Cloud Modernization — centralized processing, cross-location sync.</li><li>Debugged production issues — API latency, data mapping, UI state synchronization.</li></ul></div>
         <div class="rb"><h4>Sails Software Solutions</h4><h5>PMS (Pharmacy Ecosystem)</h5><span class="rm">.NET Full Stack Developer · May 2021 – July 2023</span><ul><li>Pharmacy System functionalities using C#, .NET, SSMS, Elasticsearch.</li><li>Designed Delivery and Shipping Feature; automated eRx Processing; led legacy migration to Angular / .NET Core.</li><li>CI/CD with Azure DevOps and Jenkins; Event-Driven Architecture with Apache Kafka.</li><li>Secured APIs with OAuth2 and Role-Based Access Control; Azure + IIS deployment.</li><li>Integrated Barcode Scanning and Label Printing workflows for prescription dispensing operations, reducing manual entry errors and accelerating fill times.</li><li>Built Audit Logging and User Activity Tracking modules to support regulatory compliance and traceability across pharmacy workflows.</li><li>Implemented Role-Based Dashboards with customized views for pharmacists, technicians, and managers, improving daily operational efficiency.</li><li>Optimized Angular application performance through Lazy Loading, OnPush change detection, and bundle-size analysis — improving initial page load by ~25%.</li><li>Created and optimized SQL queries, Stored Procedures, and database operations using ADO.NET and SQL Server.</li><li>Authored detailed API Documentation with Swagger for easy integration and developer support.</li><li>Mentored junior developers, conducted code reviews, and championed best practices across teams.</li></ul></div>
+      </div>
+      <div class="rs"><div class="rsl">Personal Projects</div>
+        <div class="rb"><h4>PortfolioBot — RAG Assistant (Live on this site)</h4><h5>FastAPI · OpenAI GPT-4o-mini · ChromaDB · Embeddings · Python · Render</h5><span class="rm">Personal · 2026</span><ul><li>End-to-end AI assistant: embeddable vanilla-JS chat widget on the portfolio frontend talking to a FastAPI backend that wraps a RAG pipeline over my own resume, experience, projects, and FAQ content.</li><li>Custom Router classifies each question as Personal (RAG-grounded, returns answer + cited source filenames) or General (direct LLM) — keeps responses factual on personal queries while staying conversational on small talk.</li><li>Ingestion pipeline reads .md / .pdf / .docx → chunks at 800 chars with 150 overlap → embeds with text-embedding-3-small → persists in ChromaDB on disk; full re-ingest is idempotent.</li><li>Retrieval uses cosine similarity over a local Chroma collection, pulls Top-K (5) chunks, stuffs them into a system prompt template, and calls GPT-4o-mini at low temperature for deterministic factual answers.</li><li>FastAPI server exposes /chat (Pydantic-validated request/response), /health, and /; CORS-locked to my domain; auto-generated OpenAPI docs at /docs.</li><li>Backend deployed on Render free tier; frontend on Vercel/Cloudflare Pages; secret-key only via environment variable; .env never committed.</li></ul></div>
+        <div class="rb"><h4>AI-Powered Quiz Platform</h4><h5>Angular · OpenAI / Anthropic APIs · TypeScript · Real-Time</h5><span class="rm">Personal · 2025</span><ul><li>Built from scratch in Angular with direct OpenAI and Anthropic API integration for Dynamic Question Generation across topics.</li><li>Real-Time Scoring engine and animated Leaderboards; ran a live session with 300+ concurrent participants.</li></ul></div>
       </div>
       <div class="rs"><div class="rsl">Education</div>
         <div class="rb"><h4>M.S. in Computer Science</h4><h5>Montclair State University</h5><span class="rm">2024 Jan – 2025 Dec · GPA: 3.9/4.0</span></div>
@@ -1059,11 +1146,12 @@ img,svg{max-width:100%;height:auto}
       <div class="clb">
         <h3>Ravi Kiran Pilli</h3><span class="clt">AI-Powered Full Stack Engineer</span>
         <p>Dear Hiring Manager,</p>
-        <p>I'm writing to express my interest in a Full-Stack / Software Engineer position. With 3.5+ years in the Pharmacy Ecosystem — shipping production code across PMS, Wholesale Market Integration, POS for Checkout, and Patient App using Angular, .NET, SQL Server, Azure, and AI — combined with a Master's in Computer Science (3.9 GPA), I bring deep healthcare-domain expertise, modern cloud architecture skills, and a working AI toolchain I use every day.</p>
+        <p>I'm writing to express my interest in a Full-Stack / GenAI / Software Engineer position. With 3.5+ years in the Pharmacy Ecosystem — shipping production code across PMS, Wholesale Market Integration, POS for Checkout, and Patient App using Angular, .NET, SQL Server, Azure, and AI — combined with a Master's in Computer Science (3.9 GPA), I bring deep healthcare-domain expertise, modern cloud architecture skills, and hands-on Generative AI engineering experience.</p>
         <p>I started in this ecosystem at Sails Software Solutions, building a PMS — pharmacy delivery, eRx automation, Kafka event-driven flows, and CI/CD on Azure DevOps. After completing my Master's, I returned to the same Pharmacy Ecosystem directly at RedSail Technologies, where I'm now building Patient Engagement on a PWA Architecture — appless, install-from-browser, no app-store distribution required — alongside 340B Compliance and Compounding Rx workflows for covered entities.</p>
         <p>At RedSail, I've led initiatives impacting product quality and scale: timezone migration spanning 300+ screens, secure patient authentication with Auth0 WebAuthn biometrics and MFA, EDI transaction processing for billing and eligibility, and Elasticsearch optimizations improving prescription lookup by 30%. I've also fixed critical infrastructure issues like SQL Server connection leaks and non-idempotent retry pipelines.</p>
-        <p>Beyond core delivery, I work AI-first: I use Claude Code, Cursor, ChatGPT, GitHub Copilot, and Google Antigravity daily to accelerate feature work, refactors, and reviews. I've integrated OpenAI, Anthropic, and Gemini APIs, explored LangChain, RAG, embeddings, and Pinecone for retrieval-augmented features, and explored n8n for automated content and operational pipelines. My AI-Powered Quiz Platform — built in Angular from scratch with dynamic question generation and real-time scoring — served 300+ live participants.</p>
-        <p>I'm drawn to teams that value engineering rigor, thoughtful architecture, and continuous innovation — and I'd welcome the chance to bring this combination of pharmacy-domain depth, full-stack execution, and AI-augmented engineering to your team.</p>
+        <p>On the <strong>Generative AI</strong> side, I design and ship end-to-end LLM applications. My production project <strong>PortfolioBot</strong> — the chat assistant running live on my portfolio site — is a Retrieval-Augmented Generation (RAG) system I built from scratch: a FastAPI backend on OpenAI GPT-4o-mini with text-embedding-3-small for semantic search, ChromaDB as a persistent vector store, and a custom Router LLM call that classifies questions as Personal (retrieves Top-K chunks and answers with cited source filenames) vs General (direct LLM). I authored the full ingestion pipeline (chunking, embedding, indexing), a three-role Prompt Engineering setup, and deployed the API on Render with CORS-locked access and an embeddable vanilla-JS widget on the frontend.</p>
+        <p>My broader <strong>AI / GenAI focus areas</strong> include: Generative AI, LLM Application Development, Retrieval-Augmented Generation (RAG), Vector Databases (ChromaDB, Pinecone), Embeddings &amp; Semantic Search, Prompt Engineering, OpenAI / Anthropic / Gemini API integration, LangChain, and FastAPI / Python AI Backends. I also use Claude Code, Cursor, ChatGPT, GitHub Copilot, and Google Antigravity daily to accelerate feature work, refactors, and reviews. Earlier, my AI-Powered Quiz Platform — built in Angular with OpenAI and Anthropic APIs for dynamic question generation and real-time scoring — served 300+ live participants.</p>
+        <p>I'm drawn to teams that value engineering rigor, thoughtful architecture, and continuous innovation — and I'd welcome the chance to bring this combination of pharmacy-domain depth, full-stack execution, and production GenAI engineering to your team.</p>
         <p>Thank you for your time and consideration.</p>
         <div class="sign">— Ravi Kiran Pilli</div>
       </div>
